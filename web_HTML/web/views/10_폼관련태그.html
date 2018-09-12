@@ -1,0 +1,235 @@
+<html>
+    <head>
+        <title>폼 관련 태그</title>
+    </head>
+    <body>
+        <h1>폼 관련 태그</h1>
+        <!-- 
+            form 태그는 html 웹 문서에서 사용자가 입력하는
+            특정 양식의 데이터를 지정하는 페이지로 전송할 수 있는
+            요소들을 제공하는 태그이다.
+
+            form 안의 input 태그들로 양식을 받을 형태를 구성하며
+            해당 input 태그들은 사용자가 입력한 정보를 받아서
+            서버로 전달하는 역할을 수행한다.
+
+            ** 속성 **
+            action : 작성한 데이터를 전달할 웹 페이지 경로
+            method : 전달할 떄 전송 방식을 GET/POST 와 같은 
+                     HTTP 통신의 전송방식을 설정하는 속성
+            
+         -->
+        <form>
+        <label>검색 : </label>
+            <input type="text" size="20" name="search">
+            &nbsp; <input type="submit" value="검색">
+
+            <p>
+                input 태그의 값을 사용자에게서 입력 받은 뒤에
+                서버로 전달할 때에는 반드시 input 태그 타입 중
+                'submit' 이라는 타입을 사용하여 전달한다.
+            </p>
+        </form>
+
+        <hr>
+
+        <form>
+            <fieldset>
+                <legend>필드 셋의 제목 1</legend>
+                <label>입력 1 : </label><input type="text" /><br>
+                <label>입력 2 : </label><input type="text" /><br>
+                <label>입력 3 : </label><input type="text" /><br>
+            </fieldset>
+            <fieldset>
+                <legend>필드 셋의 제목 2 : 영역별로 구분이 가능</legend>
+                <label>입력 1 : </label><input type="text" /><br>
+                <label>입력 2 : </label><input type="text" /><br>
+                <label>입력 3 : </label><input type="text" /><br>
+                label{입력 4 : }+input:text
+            </fieldset>
+        </form>
+
+        <hr>
+
+        <form method="post" target="_blank">
+            <h2>text 관련 input 태그</h2>
+            
+            <h3>type = "text"</h3>
+            <input type="text" name="userid" required/>
+            <p>한 줄 짜리 텍스트를 작성할 수 있는 타입</p>
+            
+            <h3>type = "password"</h3>
+            <input type="password" name="userpwd"/>
+            <p>비밀번호를 입력할 수 있는 타입</p>
+            
+            <h3>type="search"</h3>
+            <input type="search" placeholder="키워드를 입력하세요"/>
+            <p>검색 전용 박스를 제공한다.</p>
+
+            <h3>type= "email"</h3>
+            <input type="email">
+            <p>입력한 정보가 이메일이 맞는지 검사하는 타입</p>
+
+            <h3>tpe = "tel"</h3>
+            <input type="tel">
+            <p>입력한 정보가 연락처인지 확인하는 타입 <br>
+            일반적으로는 동작하지 않으며, 별도의 패턴을 적용해주어야 한다.<br>
+            하지만 연락처 정보가 각기 다르며 다양한 패턴을 적용할 수 없기 때문에 
+            잘 사용하지 않는다.</p>
+
+            <h3>type = "url"</h3>
+            <input type="url" value="https://">
+            <p>입력한 값을 value 값과 합하여 
+                웹 문서를 호출하는 타입
+            </p>
+
+            <h3>type = "submit/reset"</h3>
+            <input type="submit" value="제출"> &nbsp;&nbsp;
+            <input type="reset" value="작성취소"> 
+        </form>
+
+        <!-- 숫자와 관련된 input 태그 -->
+        <form action="get">
+            <h2>숫자와 관련된 input 태그</h2>
+
+            <h3>type = "number"</h3>
+            <input type="number" max="10" min="0" value="5" step="2">
+            <p>
+                입력창에 스핀형태로 표현되나, 웹 브라우저에 따라서 슬라이드 형태로 표현 되는 경우도 있다.
+            </p>
+
+            <h3>type = "range"</h3>
+            <input type="range" max="10" min="0" step="2">
+            <p>슬라이드 바를 통해 숫자를 지정할 수 있다.</p>
+        </form>
+
+        <hr>
+
+        <form>
+            <h2>날짜와 관련된 input 태그</h2>
+            <h3>type = "date | month | week | time | datetime-local"</h3>
+            <label>date : </label><input type="date"><br>
+            <label>month : </label><input type="month"><br>
+            <label>week : </label><input type="week"><br>
+            <label>time : </label><input type="time"><br>
+            <label>datetime-local : </label><input type="datetime-local"><br>
+        </form>
+
+        <hr>
+
+        <form>
+            <h2>라디오 버튼과 체크박스</h2>
+            <h3>type = "radio"</h3>
+
+            <label>성별 : </label>
+            <input type="radio" name="gender" value="M" checked> 남성 &nbsp;&nbsp;&nbsp;
+            <input type="radio" name="gender" value="F"> 여성
+            <p>
+                radio 버튼의 경우 name 속성을 동일하게 
+                맞추어 줘야 하나의 그룹이 되어 
+                각각 클릭되지 않는다.(모두 선택되지 않는다.)
+            </p>
+
+            <h3>type = "checkbox"</h3>
+
+            <label>취미 : </label>
+            <input type="checkbox" name="hobby" id="java" value="java" checked>
+            <label for="java">자바(손성일)</label>
+            &nbsp;&nbsp;&nbsp;
+            <input type="checkbox" name="hobby" id="SQL" value="SQL">
+            <label for="SQL">SQL 분석(김충남)</label>
+            &nbsp;&nbsp;&nbsp;
+            <input type="checkbox" name="hobby" id="HTML" value="HTML">
+            <label for="HTML">HTML(송은지)</label>
+
+            <br><br>
+
+            <input type="submit" value="확인">
+        </form>
+
+        <hr>
+
+        <h2>나머지 input 태그들</h2>
+
+        <form>
+            <h3>type = "color"</h3>
+            색상 선택 : <input type="color"><br>
+
+            <h3>type = "file"</h3>
+            파일 선택 : <input type="file"><br>
+
+            <h3>type = "hidden"</h3>
+            안보여용 ^_^ : <input type="hidden"><br>
+
+            <h3>버튼 관련 태그들</h3>
+            
+            <h4>일반 버튼 (type="button")</h4>
+            <input type="button" value="일반 버튼">
+
+            <h4>전송 버튼 (type="submit")</h4>
+            <input type="submit" value="전송 버튼">
+
+            <h4>취소 버튼 (type="reset")</h4>
+            <input type="reset" value="취소 버튼">
+
+            <!-- button 태그 -->
+            <br><br>
+            <button>일반 버튼</button> 
+             &nbsp;&nbsp;
+            <button type="submit">전송버튼</button>
+             &nbsp;&nbsp;
+            <button type="reset">취소버튼</button>
+        </form>
+
+        <hr>
+
+        <form>
+            <h2>select 태그와 option 태그 : 단일 선택</h2>
+            이메일 선택 : 
+            <select>
+                <option value="naver">@naver.com</option>
+                <option value="hanmail">@hanmail.net</option>
+                <option value="gmail">@gmail.com</option>
+                <option value="nate">@nate.com</option>
+                <option value="hanmir">@hanmir.com</option>
+                <option value="dreamwiz">@dreamwiz.com</option>
+                <option value="empas">@empas.com</option>
+                <option value="etc">- 기타 -</option>
+            </select>
+        </form>
+         
+        <br><br>
+
+        <h2>select 태그의 속성을 통한 다중 선택</h2>
+        <p>selet size 속성으로 opton의 갯수를 여러개 보여줄 수 있다.</p>
+        <p>select multiple 속성으로 다중 선택을 구현할 수 있다.</p>
+
+        <select size="3" multiple>
+            <option value="ko">대한민국</option>
+            <option value="cn">중국</option>
+            <option value="en">미국</option>
+            <option value="ca">캐나다</option>
+            <option value="ve">베트남</option>
+            <option value="uk">영국</option>
+            <option value="de">독일</option>
+        </select>
+
+
+        <hr>
+
+        <h2>textarea</h2>
+        <!-- 문자열을 여러줄로 이력할 수 있는 태그이다. -->
+        <form action="">
+            <textarea cols="30" rows="10"></textarea>
+
+            <br><br>
+
+            <textarea cols="30" rows="10" style="resize: none"></textarea>
+        </form>
+
+        <br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br>
+    </body>
+</html>
