@@ -1,0 +1,158 @@
+<html>
+    <head>
+        <title>CSS 선택자 3</title>
+        <style>
+            /* 일반 구조 선택자 */
+            /* 형제 관계 태그 중 첫번째 태그 선택하기 */
+            #test1 p:first-child {
+                background:chocolate;
+                color : white;
+            }
+
+            /* 형제 관계 태그 중 마지막 태그 선택하기 */
+            #test1 *:last-child {
+                background: lawngreen;
+                color : orangered;
+            }
+
+            /* 형제 관계 태그 중 n번째 태그 선택하기 */
+            #test1 p:nth-child(2n) {
+                background: hotpink;    
+                color : black;
+            }
+
+            /* 형제 관계 태그 중 뒤에서부터 n번째 태그 선택하기 */
+            #test1 p:nth-last-child(4) {
+                background: beige;
+                color: brown;
+            }
+
+            /* 형태 구조 선택자 */
+            /* 형제 관계 태그 중 첫번째 p태그 선택하기 */
+            #test2 p:first-of-type {
+                background: yellow;
+                color : navy;
+            }
+
+            /* 형제 관계 태그 중 마지막 태그 선택하기 */
+            #test2 p:last-of-type {
+                background: cornsilk;
+                color : crimson;
+            }
+
+            /* 형제 관계 태그 중 n번째 p태그 선택하기 */
+            #test2 p:nth-of-type(2n) {
+                background: coral;
+                color : blue;
+            }
+
+            /* 형제 관계 태그 중 뒤에서 n번째 p태그 선택하기 */
+            #test2 p:nth-last-of-type(3) {
+                background: lightskyblue;
+                color : tomato;
+            }
+
+            /* 문자 선택자 */
+            /* 첫번째 문자 선택하기 */
+            #test3 p:first-letter {
+                font-size : 3em;
+            }
+
+            /* 첫번째 줄을 선택하기 */
+            #test3 p:first-line {
+                background: lightgoldenrodyellow;
+            }
+
+            /* 태그 별로 자동 번호 매김처리 하기 */
+            #test3 p{
+                counter-increment: rint;
+            }
+
+            /* 태그 앞의 공간을 선택하기 */
+            #test3 p:before {
+                content : counter(rint)".";
+            }
+
+            /* 태그 뒤의 공간 선택하기 */
+            #test3 p:after {
+                content : "@@@ 태그 뒤의 공간입니다. @@@";
+            }
+
+            /* 사용자가 드래그한 글자의 스타일 적용하기 */
+            #test3 p::selection{
+                background: lightgreen;
+                color : purple;
+            }
+
+            /* 부정 선택자 */
+            #test4 p:not(:nth-child(2n-1)){
+                background: salmon;
+            }
+
+        </style>
+    </head>
+    <body>
+        <h1>CSS 선택자 3</h1>
+        <hr>
+
+        <h2>일반 구조 선택자</h2>
+        <p>특정한 위치에 있는 요소(태그)를 선택할 수 있는 선택자</p>
+        <div id="test1">
+            <p>테스트 1</p>
+            <p>테스트 2</p>
+            <p>테스트 3</p>
+            <p>테스트 4</p>
+            <p>테스트 5</p>
+            <pre>테스트 6</pre>
+        </div>
+
+        <h2>형태 구조 선택자</h2>
+        <p>특정한 위치의 태그를 선택할 때 사용한다.</p>
+        <div id="test2">
+            <p>테스트 1</p>
+            <p>테스트 2</p>
+            <p>테스트 3</p>
+            <p>테스트 4</p>
+            <p>테스트 5</p>
+            <pre>테스트 6</pre>
+        </div>
+
+        <hr>
+
+        <h2>문자 선택자</h2>
+        <p>해당 태그 내부에 특정 문자열을 선택하는 방법</p>
+        
+        <div id="test3">
+            <p>
+                    대법원장은 국회의 동의를 얻어 대통령이 임명한다. 공무원인 근로자는 법률이 정하는 자에 한하여 단결권·단체교섭권 및 단체행동권을 가진다. 군사재판을 관할하기 위하여 특별법원으로서 군사법원을 둘 수 있다.
+
+                    국가는 재해를 예방하고 그 위험으로부터 국민을 보호하기 위하여 노력하여야 한다. 국가는 건전한 소비행위를 계도하고 생산품의 품질향상을 촉구하기 위한 소비자보호운동을 법률이 정하는 바에 의하여 보장한다.
+                    
+                    훈장등의 영전은 이를 받은 자에게만 효력이 있고, 어떠한 특권도 이에 따르지 아니한다. 선거에 관한 경비는 법률이 정하는 경우를 제외하고는 정당 또는 후보자에게 부담시킬 수 없다.
+                    
+                    제1항의 해임건의는 국회재적의원 3분의 1 이상의 발의에 의하여 국회재적의원 과반수의 찬성이 있어야 한다. 헌법재판소의 장은 국회의 동의를 얻어 재판관중에서 대통령이 임명한다.
+                    
+                    국가는 법률이 정하는 바에 의하여 재외국민을 보호할 의무를 진다. 국교는 인정되지 아니하며, 종교와 정치는 분리된다. 대법관은 대법원장의 제청으로 국회의 동의를 얻어 대통령이 임명한다.
+            </p>
+
+        </div>
+
+        <hr>
+
+        <h2>부정 선택자</h2>
+        <p>선택한 요소(태그)를 제외한 나머지를 선택하는 방법</p>
+        <div id="test4">
+            <p>테스트 1</p>
+            <p>테스트 2</p>
+            <p>테스트 3</p>
+            <p>테스트 4</p>
+            <p>테스트 5</p>
+        </div>
+
+        <a href="index.html">처음으로 돌아가기</a>
+
+        <br><br><br><br>
+        <br><br><br><br>
+
+    </body>
+</html>
