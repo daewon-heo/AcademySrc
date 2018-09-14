@@ -1,0 +1,122 @@
+<html>
+    <head>
+        <title>배경 관련 스타일</title>
+        <style>
+            body {
+                background-color : beige;
+                /* 
+                    background-color : #000000;
+                    background-color : rgb(255,0,0);
+                    background-color : rgba(255,0,0,0.7);
+                    background-color : hsl(360, 70%, 50%);
+                    background-color : hsla(360, 70%, 50%, 0.5);
+                 */
+            }
+
+            #div-bg {
+                width : 50%;
+                background-color : lightgreen;
+            }
+
+            /* 배경 영역 설정하기 */
+            .div-test {
+                background-color : white;
+                margin : 30px;
+                padding : 20px;
+                width : 20%;
+                border : 5px dashed black;
+                /* float: left;  */
+            }
+
+            #div1 { background-clip: border-box;}
+            #div2 { background-clip: padding-box;}
+            #div3 { background-clip: content-box;}
+
+            /* 배경 이미지 설정하기 */
+            #div-img {
+                width : 70%;
+                height : 800px;
+                border : 1px solid black;
+                background-image : url("../resource/image/bgsample.png");
+                background-repeat : no-repeat;
+                /*
+                background-repeat : repeat; (기본값) 
+                background-repeat : repeat-x; (가로 반복만)
+                background-repeat : repeat-y; (세로 반복만) 
+                background-repeat : no-repeat; (반복 없음)
+                */
+                background-size : auto;
+
+                /* 
+                background-size : auto; (기본값)
+                background-size : 80% 80%; (임의의 값 지정)
+                background-size : contain; (공간을 채우겠다 : 그림 기준)
+                background-size : cover; (공간을 메꾸겠다 : 공간 기준) 
+                 */
+
+                background-position: 50% 50%;
+                 /* 
+                background-position: left top;
+                background-position: right top;
+                background-position: center top;
+                background-position: left bottom;
+                background-position: right bottom;
+                background-position: center bottom;
+                background-position: [left | right | center] 
+                                     [top | bottom | center]
+                  */
+
+                  background-attachment: scroll;
+                  /* 
+                  background-attachment: scroll;
+                   */
+            }
+        </style>
+    </head>
+    <body>
+        <h1>배경 관련 스타일</h1>
+        <h3>배경색 적용하기</h3>
+        <pre>body{ background-color : 색상; }</pre>
+        
+        <hr>
+
+        <h3>div 배경 적용하기</h3>
+        <p>div 영역을 설정한 뒤에 배경색을 지정하기 위해서는 <br>
+           div에 별도로 배경색을 적용해야 한다.</p>
+
+        <div id="div-bg">
+            모든 국민은 보건에 관하여 국가의 보호를 받는다. 타인의 범죄행위로 인하여 생명·신체에 대한 피해를 받은 국민은 법률이 정하는 바에 의하여 국가로부터 구조를 받을 수 있다.
+        </div>
+
+        <hr>
+
+        <h3>배경의 적용 범위 선택하기</h3>
+
+        <p>배경의 영역을 설정할 때, 배경 색상만 설정할 수 있는 것이 아니라<br>
+            background-clip 속성을 통해 배경 범위도 설정할 수 있다.
+        </p>
+
+        <div class="div-test" id="div1">
+            모든 국민은 보건에 관하여 국가의 보호를 받는다. 타인의 범죄행위로 인하여 생명·신체에 대한 피해를 받은 국민은 법률이 정하는 바에 의하여 국가로부터 구조를 받을 수 있다.
+        </div>
+
+        <div class="div-test" id="div2">
+            모든 국민은 보건에 관하여 국가의 보호를 받는다. 타인의 범죄행위로 인하여 생명·신체에 대한 피해를 받은 국민은 법률이 정하는 바에 의하여 국가로부터 구조를 받을 수 있다.
+        </div>
+
+        <div class="div-test" id="div3">
+            모든 국민은 보건에 관하여 국가의 보호를 받는다. 타인의 범죄행위로 인하여 생명·신체에 대한 피해를 받은 국민은 법률이 정하는 바에 의하여 국가로부터 구조를 받을 수 있다.
+        </div>
+
+        <hr>
+
+        <h3>배경 이미지 적용하기</h3>
+        <p>background-img 속성을 활용하여 배경 사진을 넣을 수 있다. <br>
+           사진의 크기에 따라 반복 여부를 설정할 수 있으며
+           배경 이미지가 배경의 크기보다 크거나 작을경우 이미지를 자를 수 도 있다.
+           이때 사용하는 속성이 각각 background-repaet 와 background-size이다
+        
+        </p>
+        <div id="div-img"></div>
+    </body>
+</html>
