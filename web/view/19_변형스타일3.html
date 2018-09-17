@@ -1,0 +1,151 @@
+<html>
+    <head>
+        <title>기타 변형 스타일 3</title>
+        <style>
+            .wrap1 {
+                border : 1px solid black;
+                width : 300px;
+                height : 250px;
+                display : inline-block;
+            }
+
+            .wrap1 img {
+                width : 300px;
+                height : 200px;
+                border : 1px solid black;
+            }
+
+            .left-top:active {
+                transform-origin: left top;
+                transform : rotateZ(25deg);
+            }
+
+            .left-bottom:active {
+                transform-origin : left bottom;
+                transform : rotateZ(25deg);
+            }
+
+            .right-top:active {
+                transform-origin : right top;
+                transform : rotateZ(25deg);
+            }
+
+            .right-bottom:active {
+                transform-origin : right bottom;
+                transform : rotateZ(25deg);
+            }
+
+            .wrap2 {
+                width : 200px;
+                height : 200px;
+                border : 1px solid black;
+                display : inline-block;
+            }
+
+            .box1 {
+                transform : perspective(500px)
+                            rotateY(45deg);
+                width : 200px;
+                height : 200px;
+                background : blue;
+            }
+
+            .box2 {
+                transform : rotateX(45deg);
+                transform-origin: left top;
+                width : 200px;
+                height : 200px;
+                background: lightblue;
+            }
+
+            .style1 {
+                transform-style: left;
+            }
+
+            .style2 {
+                transform-style: preserve-3d;
+            }
+
+            .wrap {
+                width : 300px;
+                height : 200px;
+                border : 1px soild black;
+                display : inline-block;
+            }
+
+            .wrap3 img {
+                width : 300px;
+                height : 200px;
+            }
+
+            .back1:active{
+                transform : rotateY(180deg);
+                backface-visibility: hidden;
+            }
+
+            .back2:active{
+                transform : rotateY(180deg);
+                backface-visibility: visible;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>기타 변형 스타일 속성들</h1>
+        <h3>변형의 기준점 설정하기</h3>
+        <p>transform-origin 속성을 통해 변형의 기준점을 잡을 수 있다.</p>
+
+        <div>
+            <div class="wrap1">
+                <img src="../resource/image/flower1.PNG" 
+                     alt="이미지1"
+                     class="left-top">
+            </div>
+            <div class="wrap1">
+                <img src="../resource/image/flower2.PNG" 
+                     alt="이미지2"
+                     class="left-bottom">
+            </div>
+            <div class="wrap1">
+                <img src="../resource/image/flower3.PNG" 
+                     alt="이미지3"
+                     class="right-top">
+            </div>
+            <div class="wrap1">
+                <img src="../resource/image/flower4.PNG" 
+                     alt="이미지4"
+                     class="right-bottom">
+            </div>    
+        </div>
+
+        <hr>
+
+        <h3>3d 변형 설정하기</h3>
+        <div class="wrap2">
+            <div class="box1 style1">
+                <div class="box2"></div>
+            </div>
+        </div>
+
+        <div class="wrap2">
+            <div class="box1 style2">
+                <div class="box2"></div>
+            </div>
+        </div>
+
+        <hr>
+
+        <h3>사진 뒷면 보이게 하기</h3>
+        <div>
+            <div class="wrap3">
+                <img src="../resource/image/river1.PNG"
+                     class="back1">
+            </div>
+
+            <div class="wrap3">
+                <img src="../resource/image/river2.PNG"
+                     class="back2">
+            </div>
+        </div>
+
+    </body>
+</html>

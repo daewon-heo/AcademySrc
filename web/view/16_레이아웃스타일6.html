@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <title>테이블 레이아웃 스타일</title>
+        <style>
+            table {
+                width : 300px;
+                height : 400px;
+                border : 1px solid black;
+                empty-cells: hide; /* 비어있는 셀 표시 안함 */
+                border-spacing: 50px 50px;
+                table-layout: fixed;
+                /* table-layout: auto; */
+            }
+
+            table td {
+                width : 80px;
+                border : 1px solid black;
+                text-align : cneter;
+                vertical-align: top;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>테이블 레이아웃 스타일</h1>
+        <table>
+            <caption>성적표</caption>
+            <thead>
+                <tr>
+                    <th>구분</th>
+                    <th>점수</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>국어</td>
+                    <td>100</td>
+                </tr>
+                <tr>
+                    <td>수학</td>
+                    <td>30</td>
+                </tr>
+                <tr>
+                    <td>영어</td>
+                    <td>30</td>
+                </tr>
+                <tr>
+                    <td>영어</td>
+                    <td>30</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>샘플 데이터입니다.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br><br><br><br>
+        <br><br><br><br>
+        <br><br><br><br>
+    </body>
+</html>

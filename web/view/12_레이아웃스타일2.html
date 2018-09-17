@@ -1,0 +1,121 @@
+<html>
+    <head>
+        <title>테두리 관련 스타일</title>
+        <style>
+            .div-common {
+                width : 100px;
+                height : 100px;
+                border-width : 3px; 
+            }
+
+            #border-test1 {
+                border-style : none;    /* 기본값 */
+            }
+
+            #border-test2 {
+                border-style : hidden;
+                box-shadow : 5px 5px 2px gray;
+            }
+
+            #border-test3 {
+                border-style : dotted;
+            }
+
+            #border-test4 {
+                border-style : dashed;
+                border-top-color: tomato;
+            }
+
+            #border-test5 {
+                border-style: solid;
+            }
+
+            #border-test6 {
+                border-style : double;
+                border-color : green;
+            }
+
+            #border-test7 {
+                border-style : groove;
+                border-top-left-radius: 50px;
+            }
+
+            #border-test8 {
+                border-style : inset;
+                border-bottom-right-radius: 50px;
+            }
+
+            #border-test9 {
+                border-style : outset;
+                border-top-right-radius : 50px;
+                border-bottom-right-radius : 50px;
+            }
+
+            #border-test10 {
+                border-style : right;
+                box-shadow : 5px 5px 3px 2px gray;
+            }
+
+            #border-test11 {
+                border-style : solid;
+                box-shadow : 5px 5px 3px 2px gray;
+                border-color : red yellow  red yellow;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>테두리 관련 스타일</h1>
+        <pre>선택자 { border-style : none | hidden | solid ... }</pre>
+
+        <h3>border-style : none</h3>
+        <div class="div-common" id="border-test1"></div>
+
+        <h3>border-style : hidden &amp; <br>
+            border-shadow : 5px 5px 3px 2px gray</h3>
+        <div class="div-common" id="border-test2"></div>
+
+        <h3>border-style : dotted </h3>
+        <div class="div-common" id="border-test3"></div>
+
+        <h3>border-style : dashed &amp; <br>
+            border-top-color : tomato; </h3>
+        <div class="div-common" id="border-test4"></div>
+
+        <h3>border-style : soild;</h3>
+        <div class="div-common" id="border-test5"></div>
+
+        <h3>borders-style : double;<br>
+            border-color : green;
+        </h3>
+        <div class="div-common" id="border-test6"></div>
+
+        <h3>broder-style : groove; &amp;<br>
+            border-top-left-radius : 50px;
+        </h3>
+        <div class="div-common" id="border-test7"></div>
+
+        <h3>border-style : inset; &amp;<br>
+            border-bottom-right : 50px;
+        </h3>
+        <div class="div-common" id="border-test8"></div>
+
+        <h3>border-style : outset; &amp;
+            border-top-right-radius : 50px &amp;
+            border-bottom-right-radius : 50px;
+        </h3>
+        <div class="div-common" id="border-test9"></div>
+
+        <h3>border-style : right; &amp;<br>
+            box-shadow : 5px 5px 3px 2px gray;
+        </h3>
+        <div class="div-common" id="border-test10"></div>
+
+        <h3>border style 실습</h3>
+        <div class="div-common" id="border-test11"></div>
+
+        <br><br><br><br>
+        <br><br><br><br>
+        <br><br><br><br>
+        <br><br><br><br>
+    </body>
+</html>

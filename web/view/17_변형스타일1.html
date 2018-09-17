@@ -1,0 +1,117 @@
+<html>
+    <head>
+        <title>변형 스타일 1</title>
+        <style>
+            .trans {
+                width : 250px;
+                height : 200px;
+            }
+
+            .trans1:hover {
+                transform: translateX(-50px);
+                -webkikt-transform : translateX(-50px);
+                -ms-transform : translateX(-50px);
+            }
+            .trans2:hover {
+                transform: translateY(50px);
+                -webkikt-transform : translateY(50px);
+                -ms-transform : translateY(50px);
+            }
+
+            .trans3:hover {
+                transform : translate(50px, 50px);
+                -webkikt-transform : translateY(50px, 50px);
+                -ms-transform : translateY(50px, 50px);
+            }    
+                
+            .trans4:hover {
+                transform : scaleX(2);
+                -webkikt-transform : scaleX(2);
+                -ms-transform : scaleX(2);
+            }
+
+            .trans5:hover {
+                transform : scaleY(2);
+                -webkikt-transform : scaleY(2);
+                -ms-transform : scaleY(2);
+            }      
+
+            .trans6:hover {
+                transform : scale(2,2);
+                -webkikt-transform : scale(2,2);
+                -ms-transform : scale(2,2);
+            }  
+
+            .trans7:hover {
+                transform : rotate(45deg);
+                -webkikt-transform : rotate(45deg);
+                -ms-transform : rotate(45deg);
+            }
+
+            .trans8:hover {
+                /* transform : skewX(45deg); */
+                transform : skewY(45deg);
+                /* -webkikt-transform : rotate(45deg);
+                -ms-transform : rotate(45deg); */
+            }
+
+            .trans9:hover {
+                transform : skew(10deg, 10deg);
+            }
+        </style>
+    </head>
+    <body>
+        <h1>2차원 변형 스타일 설정하기</h1>
+        <p>특정 요소를 가로, 세로 위치 정보를 활용하여
+            이동시키거나 길이를 변경하는 속성 스타일 
+        </p>
+
+        <h3>이미지 좌우 이동시키기</h3>
+        <img src="../resource/image/flower1.PNG" 
+             alt="이미지1"
+             class="trans trans1">
+
+        <h3>이미지 상하 이동시키기</h3>
+        <img src="../resource/image/flower2.PNG" 
+            alt="이미지2"
+            class="trans trans2">
+
+        <h3>이미지 대각선 이동시키기</h3>
+        <img src="../resource/image/flower3.PNG" 
+            alt="이미지3"
+            class="trans trans3">
+        <hr>
+
+        <h3>이미지 가로 확대 축소하기</h3>
+        <img src="../resource/image/flower4.PNG" 
+            alt="이미지4"
+            class="trans trans4">            
+
+        <h3>이미지 세로 확대 축소하기</h3>
+        <img src="../resource/image/flower5.PNG" 
+            alt="이미지5"
+            class="trans trans5">            
+
+        <h3>이미지 전체 확대 축소하기</h3>
+        <img src="../resource/image/forest1.PNG" 
+            alt="이미지6"
+            class="trans trans6">         
+        <hr>
+
+        <h3>이미지 지정한 각도만큼 회전시키기</h3>
+        <img src="../resource/image/city1.PNG" 
+            alt="이미지7"
+            class="trans trans7">         
+
+        <h3>이미지 지정한 각도만큼 비틀기</h3>
+        <img src="../resource/image/river1.PNG" 
+            alt="이미지8"
+            class="trans trans8">         
+
+        <h3>이미지 전체 비틀기</h3>
+        <img src="../resource/image/river2.PNG" 
+            alt="이미지9"
+            class="trans trans9">         
+            
+    </body>
+</html>

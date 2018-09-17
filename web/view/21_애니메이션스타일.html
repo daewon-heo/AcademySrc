@@ -1,0 +1,81 @@
+<html>
+    <head>
+        <title>애니메이션 스타일</title>
+        <style>
+            @keyframes trans1 {
+                from {
+                    background: greenyellow;
+                    border: 1px solid black;                    
+                }to {
+                    background: honeydew;
+                    border-radius: 50%;
+                    transform : perspective(300px) rotate(360deg);
+                    border : 3px solid red;
+                }
+            }
+
+            /* 여러 변화 적용하기 */
+            @keyframes trans2 {
+                0%{
+                    background: beige;
+                    border: 1px solid black;
+                }
+                30%{
+                    transform : translate(50px, 50px);
+                }
+                50%{
+                    background: steelblue;
+                    transform: scale(1.2);
+                    border: 3px solid beige;
+                }
+                100%{
+                    background: gold;
+                    transform: rotate(45deg);
+                    border : 3px solid lightgoldenrodyellow;
+                }
+            }
+
+            .div1 {
+                margin : 100px;
+                width : 100px;
+                height : 100px;
+                background: green;
+                animation-name : trans1;
+                animation-duration : 5s;
+                animation-direction : normal;
+                animation-iteration-count: 10;
+            }
+
+            .div2 {
+                margin: 100px;
+                width : 100px;
+                height : 100px;
+                animation-name: trans2;
+                animation-duration: 5s;
+                animation-direction:alternate;
+                animation-iteration-count: infinite;
+            }
+
+            img {
+                margin-left: 100px;
+                width : 100px;
+                height : 100px;
+                animation-name: trans1;
+                animation-duration : 3s;
+                animation-direction : alternate;
+                animation-iteration-count: 10;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>애니메이션 스타일</h1>
+        <h3>@keyframes</h3>
+
+        <div class="div1"></div>
+
+        <div class="div2"></div>
+
+        <img src="../resource/image/bgsample.PNG">
+
+    </body>
+</html>

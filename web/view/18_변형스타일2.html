@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <title>변형 스타일 2</title>
+        <style>
+            img {
+                width : 300px;
+                height : 250px;
+            }
+
+            .trans1:active {
+                transform : perspective(300px)
+                            translate3d(10px, 0px, 100px);
+                -webkit-transform : perspective(300px)
+                            translate3d(10px, 0px, 100px);
+                -o-transform : perspective(300px)
+                            translate3d(10px, 0px, 100px);
+                -moz-transform : perspective(300px)
+                            translate3d(10px, 0px, 100px);
+            }
+
+            .trans2:active {
+                transform : perspective(300px)
+                            translateZ(30px);
+            }
+
+            .trans3:active {
+                transform : perspective(300px)
+                            rotateZ(45deg);
+            }
+
+            .trans4:active {
+                transform : perspective(300px)
+                            rotate3d(2.5, 1.5, -1.5, 30deg);
+            }
+        </style>
+    </head>
+    <body>
+        <h1>3차원 변형 스타일</h1>
+        <h3>지정한 크기만큼 x,y,z 축 이동하기</h3>
+        <img src="../resource/image/flower1.PNG" 
+             alt="이미지1" class="trans1">
+
+        <h3>지정한 크기만큼 z축 이동하기</h3>
+        <img src="../resource/image/flower2.PNG" 
+             alt="이미지2" class="trans2">
+
+        <h3>지정한 각도만큼 z축 회전하기</h3>
+        <img src="../resource/image/flower3.PNG" 
+             alt="이미지3" class="trans3">
+
+        <hr>
+
+        <h3>지정한 각도만큼 X,Y,Z 축 회전시키기</h3>
+        <img src="../resource/image/flower4.PNG" 
+             alt="이미지4" class="trans4">
+
+    </body>
+</html>
