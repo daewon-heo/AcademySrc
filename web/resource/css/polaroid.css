@@ -1,0 +1,38 @@
+/* 
+    .css : 웹 문서와 별도로 나누어진 CSS(스타일) 전용 설정 파일 
+    만약 원문의 style 내용이 길어질 경우 혹은 같은 내용의 스타일을
+    여러 웹 문서가 공유해야 할 필요가 있을 경우
+    별도로 선언하여 외부 참조를 통해 첨부하는 스타일 설정 파일이다.
+
+    작성 방식은 <style> 태그 안에 css를 사용했던 방식과 동일하다.
+    - write by daewon-heo(허대원)
+*/
+
+.polaroid {
+    position : relative;
+    left : 100px;
+    top : 50px;
+    width : 300px;
+    padding : 10px 10px 20px 10px;
+    border  : 1px solid black;
+    background: white;
+    box-shadow: 2px 2px 3px gray;
+}
+
+.caption {
+    text-align : center;
+    font-family : "고딕체";
+    font-weight : 600;
+    font-size : 16px;
+    color : darkred;
+}
+
+.rotate {
+    transform : rotate(9deg);
+    /* 
+        -webkit-transform
+        -ms-transform
+        -moz-transform
+        -o-transform
+     */
+}
