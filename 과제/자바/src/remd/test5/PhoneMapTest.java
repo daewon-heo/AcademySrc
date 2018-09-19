@@ -32,27 +32,22 @@ public class PhoneMapTest {
 			System.out.println(iter.next());
 		}
 		
-		
 		Set<Entry<String,Phone>> entry2 = map.entrySet();
 		Iterator<Entry<String,Phone>> iter2 = entry2.iterator();
 		Properties prop = new Properties();
 		
 		while(iter2.hasNext()){
 			Phone phone = iter2.next().getValue();
-			System.out.println(phone);
-//			prop.setProperty(phone.getModel(), phone.toString());
-			prop.put(phone.getModel(), phone);
-			System.out.println(prop.getProperty(phone.getModel()));
-
+			prop.put(phone.getModel(), phone.toString());
 		}
-		
+
+		// 맵에 저장된 객체 정보를 Properties 를 사용해 “phone.xml” 파일에 기록 저장한다.
 		try {
-			prop.storeToXML(new FileOutputStream("phone.xml"), "test test");
+			prop.storeToXML(new FileOutputStream("phone.xml"), "phone.xml");
+			System.out.println();
+			System.out.println("phone.xml 파일에 성공적으로 저장되었습니다.");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		// 맵에 저장된 객체 정보를 Properties 를 사용해 “phone.xml” 파일에 기록 저장한다.
-
 	}
-
 }
