@@ -1,0 +1,212 @@
+<html>
+    <head>
+        <title>HTML 태그 접근하기</title>
+        <style>
+            .area{
+                width:300px;
+                height:200px;
+                border:3px solid slateblue;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>HTML 태그 접근하기</h1>
+        <h1>아이디로 접근하기</h1>
+        <div id="area1" class="area"></div>
+        <button onclick="accessId();">아이디로 접근 확인</button>
+        
+        <script>
+            function accessId(){
+                var area1 = document.getElementById('area1');
+                area1.style.backgroundColor = "Yellow";
+                area1.innerHTML = "아이디로 접근 성공!!";
+            }    
+        </script>
+
+        <hr>
+
+        <h3>태그명으로 접근하기</h3>
+        <ul>
+            <li>목록1</li>
+            <li>목록2</li>
+            <li>목록3</li>
+            <li>목록4</li>
+            <li>목록5</li>
+        </ul>
+        <button onclick="accessTagName();">태그명으로 접근하기</button>
+
+        <script>
+            function accessTagName(){
+                var list = document.getElementsByTagName('li');
+
+                console.log("전달받은 li 개수 : " + list.length);
+
+                var changeColor = 50;
+
+                //for-in 문
+                // for(var i in list){
+                //     console.log(list[i]);
+                //     list[i].style.backgroundColor = "rgb(130,220," + changeColor + ")" ;
+
+                //     changeColor += 50;
+                // }
+
+                // 일반 for문
+                for(var i = 0 ; i < list.length; i++){
+                    console.log(list[i]);
+                    list[i].style.backgroundColor = "rgb(130,220," + changeColor + ")" ;
+
+                    changeColor += 50;
+                }
+            }
+        </script>
+
+        <hr>
+
+        <h3>name 속성으로 접근하기</h3>
+        <form>
+            <fieldset>
+                <legend>취미 선택하기</legend>
+                <table>
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="hobby" value="Java">
+                            <label>Java 공부하기</label>
+                        </td>
+
+                        <td>
+                            <input type="checkbox" name="hobby" value="HTML">
+                            <label>HTML 공부하기</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="hobby" value="Oracle">
+                            <label>SQL 공부하기</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="hobby" value="Movie">
+                            <label>영화 감상</label>
+                        </td>
+
+                        <td>
+                            <input type="checkbox" name="hobby" value="TV">
+                            <label>TV 시청</label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="hobby" value="Sleep">
+                            <label>숙면</label>
+                        </td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+
+        <div id="area2" class="area"></div>
+        <button onclick="accessName();">이름으로 접근하기</button>
+
+        <script>
+            function accessName(){
+                var hobby = document.getElementsByName("hobby");
+
+                console.log("hobby 개수 : " + hobby.length);
+
+                var resultItem = "";
+
+                for(var i in hobby){
+                    if(hobby[i].checked == true){
+                        resultItem += hobby[i].value 
+                                    + "선택하였습니다!<br>";
+                    }
+                }
+
+                console.log("선택 내역 : " + resultItem);
+
+                document.getElementById('area2').innerHTML
+                    = resultItem;
+            }
+        </script>
+
+        <hr>
+
+        <h3>textBox 안의 value 읽어오기</h3>
+        <form>
+            이름 : <input type="text" name="userName" id="userName">
+            <input type="button" value="input 값 읽어오기" onclick="readValue();">
+        </form>
+
+        <div id="area3" class="area"></div>
+
+        <script>
+            function readValue(){
+                var inputValue = document.getElementById('userName');
+
+                if(inputValue.value == '' || inputValue.value.length == 0){
+                    alert("이름을 반드시 입력해주세요.");
+                    inputValue.focus();
+                }else{
+                    document.getElementById('area3').innerHTML
+                    = inputValue.value + "님 환영합니다. ^_^";
+                }
+            }
+        </script>
+
+        <hr>
+
+        <h3>input:password 활용하여 비밀번호 유효성 검증하기</h3>
+        <p>비밀번호를 입력 받아<br>
+            8자 미만이면 : 8자이상 작성하셔야 합니다. <br>
+            16자 이상이면 : 15자 이내로 작성하셔야 합니다. <br>
+            값이 비었을 경우 : 비밀번호를 입력해주세요 <br>
+            정상일경우 : 로그인에 성공하였습니다. <br>
+            출력하기
+        </p>
+
+        <form>
+            비밀번호 : <input type="password" name="userPwd" id="userPwd"
+                        placeholder="8자 이상 15일 이내로 작성하세요">
+            <button type="button" onclick="pwdValidation();">로그인 하기</button>
+        </form>
+
+        <div id="area4" class="area"></div>
+
+        <script>
+            function pwdValidation(){
+                var pwd = document.getElementById("userPwd");
+                var result = "";
+                
+                switch(validate(pwd)){
+                    case 1 : alert("비밀번호를 입력해야 합니다!");
+                    result = "다시 입력해주세요!";
+                        break;
+                    case 2 : alert("8자 이상 이어야 합니다.");
+                    result = "다시 입력해주세요!";
+                        break
+                    case 3 : alert("15자 이내로 작성해야 합니다.");
+                    result = "다시 입력하세요!";
+                        break;
+                    case 0 : alert("로그인에 성공 하였습니다");
+                    result = "로그인에 성공하였습니다."
+                        break;
+
+                }
+                //area4.innerHTML = 
+                document.getElementById('area4').innerHTML = result;
+            }
+
+            function validate(pw){
+                var result = 0;
+
+                if(pw.value == "" || pw.value.length == 0 ) result = 1;
+                else if(pw.value.length < 8) result = 2;
+                else if(pw.value.length > 15) result = 3;
+                return result;
+            }
+        </script>
+
+        <br><br><br><br>
+        <br><br><br><br>
+        <br><br><br><br>
+        <br><br><br><br>
+    </body>
+</html>

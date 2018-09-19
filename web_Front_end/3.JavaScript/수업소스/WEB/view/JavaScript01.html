@@ -1,0 +1,70 @@
+<html>
+    <head>
+        <title>자바 스크립트 개요</title>
+        <!-- 별도로 작성한 스크립트 파일 불러오기 -->
+        <script src="../resource/js/first.js"></script>
+    </head>
+    <body>
+        <h1>자바 스크립트 개요</h1>
+        <dl>
+            <dt>스크립트 언어란?</dt>
+            <dd>사용자의 요구에 맞게 수행되도록 코드를 간결하게 <br>
+                구현하는 언어. 매우 빠르고 쉽게 배울 수 있으며 <br>
+                짧은 코드로 작성할 수 있도록 고안 되었다.</dd>
+        </dl>
+        <dl>
+            <dt>자바 스크립트</dt>
+            <dd>웹 브라우저에서 가장 많이 사용하는 인터프리터 방식의<br>
+                객체지향언어. ECMA 스크립트 표준을 따르는 대표적인 웹
+                기술 구현 언어이다.</dd>
+        </dl>
+        <dl>
+            <dt>사용 방법</dt>
+            <dd>
+                <ol>
+                    <li>Inline 방식 : <br>
+                        태그 내에 직접 작성하는 방식 (간단한 소스 코드일 경우)</li>
+
+                    <li>Internal 방식 : <br>
+                        script 태그를 별도로 선언하고 그 내부에 
+                        코드를 작성하여 실행하는 방식</li>
+
+                    <li>External 방식 : <br>
+                        외부의 .JS 파일을 가져와 현재 웹 문서에 등록하는 방식 <br>
+                        (마치 CSS를 외부에서 가져 온 것 처럼 사용한다.)</li>
+                </ol>
+            </dd>
+        </dl>
+        <dl>
+            <dt>주의할 점</dt>
+            <dd>소스코드는 함수 단위로 작성하고, 이벤트 속성을 통해 실행한다.</dd>
+            <dd>이벤트 속성은 태그마다 지원하는 차이가 있으며<br>
+                일반적인 실행 방식은 on이벤트명 = '실행할 함수명([전달인자])' </dd>
+        </dl>
+        <hr>
+
+        <h2>태그에 직접 스크립트를 작성하여 구동 확인하기(Inline 방식)</h2>
+        <button onclick="alert('버튼 클릭 확인!!');">함수 실행 확인</button>
+
+        <h2>scritp 태그를 활용하여 내부에서 작성한 소스코드 실행하기 (Internal 방식)</h2>
+        <button onclick="testFn();">함수 실행 확인</button>
+
+        <script type="text/javascript">
+            // 일반 한 줄 주석입니다.
+            /* 범위 주석 입니다. ^ ~ ^*/
+
+            // 자바 스크립트는 함수를 작성할 때
+            // 반환 자료형을 붙이지 않는다.
+            function testFn(){
+                window.alert("testFn() 구동 확인")
+            }
+        </script>
+
+        <h2>별도로 작성한 자바 스크립트 함수 불러오기</h2>
+        <button onclick="samp();">samp() 함수 실행하기</button>
+
+        <br><br><br><br>
+        <br><br><br><br>
+        <br><br><br><br>
+    </body>
+</html>
