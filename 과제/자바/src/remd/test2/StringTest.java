@@ -17,13 +17,13 @@ public class StringTest {
 		cnt = 0;
 		// char[] 에서 대문자만 골라서 출력 한다. continue 문 사용할 것
 		while (cnt < data.length) {
-			if (data[cnt] >= 'A' && data[cnt] <= 'Z') {
-				System.out.println("data[" + cnt + "] : " + data[cnt]);
-				cnt++;
-			} else {
+			if(data[cnt] < 'A' && data[cnt] > 'Z'){
 				cnt++;
 				continue;
 			}
+			
+			System.out.println("data[" + cnt + "] : " + data[cnt]);
+			cnt++;
 		} // while loop 문 사용한다.
 	}
 

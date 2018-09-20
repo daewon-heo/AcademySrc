@@ -16,17 +16,18 @@ public class ArrayTest {
 		
 		System.out.println("할당된 배열의 크기 : " + array.length);
 
-		print(array);
+		ArrayTest at = new ArrayTest();
+		at.print(array);
 		
-		System.out.println("가장 큰 값 : " + max(array));
-		System.out.println("가장 작은 값 : " + min(array));
-		System.out.println("짝수의 개수 : " + evenCount(array) + " 개");
-		System.out.println("홀수의 개수: " + oddCount(array) + " 개");
-		System.out.println("합계 : " + sum(array));
-		System.out.printf("평균 : %.2f" , avg(array));
+		System.out.println("가장 큰 값 : " + at.max(array));
+		System.out.println("가장 작은 값 : " + at.min(array));
+		System.out.println("짝수의 개수 : " + at.evenCount(array) + " 개");
+		System.out.println("홀수의 개수: " + at.oddCount(array) + " 개");
+		System.out.println("합계 : " + at.sum(array));
+		System.out.printf("평균 : %.2f" , at.avg(array));
 	}
 
-	public static int sum(int[] arr) {
+	public int sum(int[] arr) {
 		int sum = 0;
 		
 		for (int i = 0; i < arr.length; i++) {
@@ -36,7 +37,7 @@ public class ArrayTest {
 		return sum;
 	}
 	
-	public static double avg(int[] arr) {
+	public double avg(int[] arr) {
 		double avg = 0;
 		
 		avg = sum(arr)/arr.length;
@@ -44,7 +45,7 @@ public class ArrayTest {
 		return avg;
 	}
 	
-	public static int max(int[] arr) {
+	public int max(int[] arr) {
 		int max = arr[0];
 		
 		for (int i = 0; i < arr.length; i++) {
@@ -55,7 +56,7 @@ public class ArrayTest {
 		return max;
 	}
 	
-	public static int min(int[] arr) {
+	public int min(int[] arr) {
 		int min = arr[0];
 		
 		for (int i = 0; i < arr.length; i++) {
@@ -66,7 +67,7 @@ public class ArrayTest {
 		return min;
 	}
 	
-	public static int evenCount(int[] arr) {
+	public int evenCount(int[] arr) {
 		int count = 0;
 		
 		for (int i = 0; i < arr.length; i++) {
@@ -77,11 +78,11 @@ public class ArrayTest {
 		return count;
 	}
 	
-	public static int oddCount(int[] arr) {
+	public int oddCount(int[] arr) {
 		return arr.length - evenCount(arr);
 	}
 	
-	public static void print(int[] arr) {
+	public void print(int[] arr) {
 		System.out.print("array : ");
 		for (int i = 0; i < arr.length; i++) {
 			System.out.print(arr[i] + "\t");

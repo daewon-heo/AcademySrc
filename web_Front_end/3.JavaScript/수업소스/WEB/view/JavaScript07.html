@@ -1,0 +1,80 @@
+<html>
+    <head>
+        <title>자바 스크립트 연산자</title>
+        <style>
+            .area{
+                width:400px;
+                height:300px;
+                background:ivory;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>자바 스크립트 연산자</h1>
+        <h3>=== 연산자와 !== 연산자</h3>
+        <p>값과 자료형 모두 일치하는지 / 일치하지 않는지
+            여부를 구분하는 연산자
+        </p>
+        <button onclick="opTest();">연산자 확인</button>
+
+        <div id="area1" class="area"></div>
+        <script>
+            function opTest(){
+                var check1 = 10;
+                var check2 = "10";
+
+                var area1 = document.getElementById("area1");
+
+                area1.innerHTML += "check1 == 10 : "
+                    + (check1 == 10) + "<br>";
+                area1.innerHTML += "check2 == 10 : "
+                + (check2 == 10) + "<br>";
+                area1.innerHTML += "check1 == '10' : "
+                    + (check1 == '10') + "<br>";
+                area1.innerHTML += "check2 == '10' : "
+                + (check2 == '10') + "<br>";
+
+                area1.innerHTML += "---------------------------<br>";
+
+                area1.innerHTML += "check1 === 10 : "
+                    + (check1 === 10) + "<br>";
+                area1.innerHTML += "check2 === 10 : "
+                + (check2 === 10) + "<br>";
+                area1.innerHTML += "check1 === '10' : "
+                    + (check1 === '10') + "<br>";
+                area1.innerHTML += "check2 === '10' : "
+                + (check2 === '10') + "<br>";
+            }
+        </script>
+
+        <hr>
+
+        <h3>짧은 자바 스크립트 조건문 만들기</h3>
+        <button onclick="checkLogic();">실행 확인</button>
+
+        <script>
+            function checkLogic(){
+                var input = Number(window.prompt("숫자를 입력하세요."));
+
+                // if(input % 2 == 0){
+                //     alert("짝수입니다.");
+                // }else{
+                //     alert("홀수입니다.");
+                // }
+                
+                // 짧은 조건문 (단항 결과 조건문)
+                // && : 좌측의 실행 결과가 참이면 우측 항을 실행
+                // || : 좌측의 실행 결과가 거짓이면 우측 항을 실행
+                // input % 2 == 0 && alert("짝수입니다.");
+                // input % 2 == 0 || alert("홀수입니다.");
+
+                input % 2 == 0 ? alert("짝수입니다.") : alert("홀수입니다.");
+            }
+        </script>
+
+
+
+
+
+    </body>
+</html>

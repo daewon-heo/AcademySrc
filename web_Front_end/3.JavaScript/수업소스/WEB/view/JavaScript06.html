@@ -1,9 +1,147 @@
 <html>
     <head>
         <title>데이터 형변환</title>
+        <style>
+            .area{
+                width:300px;
+                height:250px;
+                background:lightcyan;
+            }
+        </style>
     </head>
     <body>
         <h1>데이터 형변환</h1>
-        <h3></h3>
+        <h3>문자열 + 숫자</h3>
+        <p>자바와 동일하게 문자열 + 숫자 = 문자열</p>
+        <p>숫자 + 숫자 + 문자열 = (숫자 + 숫자) + 문자열 = 문자열</p>
+        <button onclick="testPlus();">문자열 + 숫자</button>
+        <div id="area1" class="area"></div>
+
+        <script type="text/javascript">
+            function testPlus(){
+                var test1 = 7 + '7';      // 77
+                var test2 = 7 + 7;        // 14
+                var test3 = '7' + 7;      // 77
+                var test4 = '7' + '7';    // 77
+                var test5 = 7 + 7 + '7';  // 147
+                var test6 = 7 + '7' + 7;  // 777
+                var test7 = '7' + 7 + 7;  // 777
+                var test8 = '7' + (7 + 7);// 714
+
+                var area1 = document.getElementById('area1');
+
+                area1.innerHTML += 'test1 : ' + test1 + '<br>';
+                area1.innerHTML += 'test2 : ' + test2 + '<br>';
+                area1.innerHTML += 'test3 : ' + test3 + '<br>';
+                area1.innerHTML += 'test4 : ' + test4 + '<br>';
+                area1.innerHTML += 'test5 : ' + test5 + '<br>';
+                area1.innerHTML += 'test6 : ' + test6 + '<br>';
+                area1.innerHTML += 'test7 : ' + test7 + '<br>';
+                area1.innerHTML += 'test8 : ' + test8 + '<br>';
+            }
+        </script>
+
+        <hr>
+
+        <h3>typeof() 함수</h3>
+        <p>주어진 값의 자료형을 확인하는 함수</p>
+        <p>처음 선언 시에 자료형이 어떻게 지정되는지 확인하기가 <br>
+            어렵다. 그 이유는 변수명과 var 라는 동적 자료형을 기준으로 <br>
+            실제 값에 대한 내용을 알기 어렵기 때문이다. <br>
+            따라서, 해당 변수의 실제 값에 대한 자료형을 파악하기 위한 함수가
+            바로 typeof()이다.</p>
+
+        <button onclick="testTypeOf()">typeof() 함수 확인</button>
+
+        <div id="area2" class="area"></div>
+
+        <script>
+            function testTypeOf(){
+                var name = "홍길동";
+                var age = 20;
+                var check = true;
+                var hobby = ['필라테스', '배구', '피구'];
+                var member = {
+                    member_id : 'user01',
+                    member_pwd : 'pass01',
+                    member_name : '홍길동',
+                    member_age : 20
+                }; // JSON 방식의 객체 표현
+
+                var sumNumber = function sumNumber(num1, num2){
+                    alert(num1+num2)
+                }
+
+                var temp;   // 아무값도 들어있지 않는 변수
+
+                var area2 = document.getElementById('area2');
+
+                area2.innerHTML = "";
+
+                area2.innerHTML += "name의 자료형 : " + typeof(name) + "<br>";
+                console.log(name);
+
+                area2.innerHTML += "age의 자료형 : " + typeof(age) + "<br>";
+                console.log(age);
+                
+                area2.innerHTML += "check의 자료형 : " + typeof(check) + "<br>";
+                console.log(check);
+                
+                area2.innerHTML += "hobby의 자료형 : " + typeof(hobby) + "<br>";
+                console.log(hobby);
+                
+                area2.innerHTML += "member의 자료형 : " + typeof(member) + "<br>";
+                console.log(member);
+                
+                area2.innerHTML += "sumNumber의 자료형 : " + typeof(sumNumber) + "<br>";
+                console.log(sumNumber);
+                
+                area2.innerHTML += "temp의 자료형 : " + typeof(temp) + "<br>";
+                console.log(temp);
+            }
+        </script>
+
+        <h3>데이터 파싱</h3>
+        <p>Number(), parseInt(), parseFloat(), String() 함수를 <br>
+            사용하여 문자열을 숫자로, 숫자룰 문자열로 변경할 수 있다.</p>
+        
+        <button onclick="parseTest();">자료형 변환 테스트</button>
+
+        <script>
+            function parseTest(){
+                var num1 = 2.5;
+                var num2 = '3';
+                var num3 = '$3.5';
+
+                console.log(num1);
+                console.log(num2);
+                console.log(num3);
+
+                /*
+                // Number();
+                console.log(Number(num1));
+                console.log(Number(num2));
+                console.log(Number(num3));
+
+                // parsInte()
+                console.log(parseInt(num1));
+                console.log(parseInt(num2));
+                console.log(parseInt(num3));
+                */
+
+                // ----------- 확인 테스트 ----------- //
+
+                console.log("1. " + (num1 + num2));
+                console.log("2. " + (num1 + Number(num2)));
+                console.log("3. " + (num1 + parseInt(num2)));
+                console.log("4. " + (num1 + parseFloat(num2)));
+                console.log("5. " + (String(num1) + num2));
+            }
+        </script>
+
+        <br><br><br><br><br>
+        <br><br><br><br><br>
+        <br><br><br><br><br>
+        <br><br><br><br><br>
     </body>
 </html>

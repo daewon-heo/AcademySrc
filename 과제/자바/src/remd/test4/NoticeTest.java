@@ -69,23 +69,14 @@ public class NoticeTest {
 
 	public ArrayList<Notice> fileRead() {
 		ArrayList<Notice> list = new ArrayList<Notice>();
-		ObjectInputStream ois = null;
 		
-		try {
-			ois = new ObjectInputStream(new FileInputStream("notice.dat"));
-
+		try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("notice.dat"));) {
 			while (true) {
 				Notice no = (Notice) ois.readObject();
 				list.add(no);
 			}
 		} catch (EOFException e) {
-			try {
-				ois.close();
-			} catch (IOException e1) {
-				e1.printStackTrace();
-			}
-		} catch (ClassNotFoundException e) {
-		} catch (IOException e) {
+		} catch (IOException | ClassNotFoundException e) {
 		}
 		return list;
 	}
