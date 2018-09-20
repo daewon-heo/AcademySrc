@@ -1,0 +1,183 @@
+<html>
+    <head>
+        <title>변수와 자료형</title>
+        <style>
+            .area {
+                width:300px;
+                height:400px;
+                border:1px solid black;
+                background: lightyellow;
+            }
+        </style>
+        <script type="text/javascript">
+            // 한줄 주석
+            /* 여러줄 주석 */
+
+            // 전역변수
+            // 소스코드를 웹 브라우저가 읽어올 때
+            // 내부 인터프리터에 의해 자동으로 window 객체의 필드가 된다.
+            // var str = "전역 변수 입니다.";
+            str = '전역 변수 입니다.';
+
+            // 함수 외부에 선언된 변수
+            var str2 = '전역변수 2 입니다';
+
+            // 웹 문서가 로드될 때 동작하는 이벤트
+            window.onload = function start(){
+                // 지역변수 선언
+                var str = "나는 지역변수입니다.";
+
+                // 지역변수 선언은 반드시 var나 let을 
+                // 붙여서 선언해야 한다.
+                var str3 = "나도 지역변수 입니다.";
+                
+                // 변수 호출하기
+                console.log(str);
+                console.log(window.str);
+                console.log(this.str);
+
+                console.log(str2);
+                console.log(window.str2);
+                console.log(this.str2);
+
+                // 지역변수는 window나 this 수식어를 붙일 수 없다.
+                console.log(str3);
+                // console.log(window.str3);
+                // console.log(this.str3);
+                
+
+                // 함수안에 작성된 변수를
+                // 다른 함수에서 참조하기
+                // 함수안에서 작성되었어도 var|let가 붙지않는다면
+                // 전역 변수로 생성된다.
+                what = "난 누구 일까요?";
+                showwhat();
+            }
+
+            function showwhat(){
+                
+                console.log(what);
+                console.log(window.what);
+                console.log(this.what);
+            }
+
+
+        </script>
+    </head>
+    <body>
+        <h1>변수와 자료형</h1>
+
+        <h3>변수 선언</h3>
+        <p>
+            함수 내부에서 var 변수명; 으로 선언하면 지역변수가 된다. <br>
+            함수 외부에서 선언하거나  가장 첫부분에 var 변수명; | 변수명; 으로 <br>
+            선언하면 전역 변수가 된다. <br>
+            전역변수와 지역변수가 동일한 이름일 경우 지역변수가 우선권을 가진다. <br>
+            때문에 함수 내부에서 전역 변수를 사용하고자 할 경우 window.변수명 혹은
+            this.변수명으로 전역 변수에 접근한다. <br>
+            전역 변수는 해당 문서 어디에선든 사용할 수 있으며<br>
+            지역 변수는 함수 내부에서만 사용할 수 있다.
+        </p>
+
+        <h3>개발자 도구 콘솔을 확인해 보세요 ~</h3>
+
+        <hr>
+
+        <h3>var와 let</h3>
+        <p>var : 선언된 위치 내부의 블록 전체에서 모두 사용할 수 있는 범위 변수 선언<br>
+           let : 선언된 선언된 블록 영역만 사용할 수 있는 제한 범위 변수를 선언</p>
+
+        <button onclick="varTest(10);">var 테스트</button>
+        <button onclick="letTest();">let 테스트</button>
+
+        <script>
+            function varTest(tes){
+                var x = 1;
+                
+                console.log("test : "+ tes);
+                if(true){
+                    var x = 2;
+                    console.log("[var] 내부에서 선언된 x : " + x);  // 2
+                }
+
+                console.log("[var] 외부에서 선언된 x : " + x);      // 2
+            }
+
+            function letTest(){
+                let x = 1;
+                if(true){
+                    let x = 2;
+                    console.log("[let] 내부에서 선언된 x : " + x);  // 2
+                }
+
+                console.log("[let] 내부에서 선언된 x : " + x);      // 1
+            }
+        </script>
+
+        <hr>
+
+
+        <h3>자료형</h3>
+
+        <p>자바 스크립트에서는 자료형 별로 변수 타입을 지정하지 않는다. <br>
+            처음 변수를 선언할 때 단순히 '변수를 쓰겠다' 라고만 인식하고 <br>
+            실제 변수의 공간은 값이 들어가서 사용될 때 만들어 진다. <br>
+            자바 스크립트에서 자료형을 선언하는 시기는 변수안에 값이 들어갈 때 <br>
+            값이 들어가는 순간 변수의 자료형을 해당 리터럴(값)을 보고 결정한다.</p>
+
+        <button onclick="typeTest();">자료형 테스트</button>
+        <br><br>
+        <div id="area1" class="area"></div>
+
+        <script>
+            function typeTest(){
+                var name = "홍길동";
+                var age = 20;
+                var check = true;
+                var hobby = ['음악감상','명상','웹서핑',20,true];
+                var user = {
+                    name : '고길동',
+                    age : 50,
+                    id : 'user01'
+                };  // JSON 형식의 Map 객체
+
+                // () => { ... }
+                // 자바 람다식과 유사하다.
+                /*
+                var testFn = function(num1, num2){
+                    var sum = num1 + num2;
+                    alert(sum);
+                }
+                */
+
+                var testFn = (num1, num2) => {
+                    var sum = num1 + num2;
+                    alert(sum);
+                }
+
+                // 변수화한 함수를 사용하기
+                console.log("testFn : " + testFn(10, 20));
+
+                var area1 = document.getElementById('area1');
+                
+                area1.innerHTML += "문자열 변수 : " +  name + "<br>";
+                area1.innerHTML += "숫자 변수 : " +  age + "<br>";
+                area1.innerHTML += "논리 변수 : " +  check + "<br>";
+                area1.innerHTML += "배열 변수 : " +  hobby + "<br>";
+                area1.innerHTML += "객체 변수 : " +  user + "<br>";
+                area1.innerHTML += "함수 변수 : " +  testFn + "<br>";
+
+                alert("name : " + typeof(name) + "\n"
+                    +"age : " + typeof(age) + "\n"
+                    + "check : " + typeof(check) + "\n"
+                    + "hobby : " + typeof(hobby) + "\n"
+                    + "user : " + typeof(user) + "\n"
+                    + "testFn : " + typeof(testFn));
+            }
+        </script>
+        
+        <br><br><br><br><br>
+        <br><br><br><br><br>
+        <br><br><br><br><br>
+    </body>
+</html>

@@ -1,0 +1,92 @@
+
+<html>
+        <head>
+            <title>String과 Math</title>
+            <style>
+                .area{
+                    width : 700px;
+                    height: 500px;
+                    border: 1px solid black;
+                    background : lightgreen;
+                }
+            </style>
+        </head>
+        <body>
+            <h1>String과 Math</h1>
+            <h3>String 기본 제공 요소</h3>
+            <p>"", ''로 묶여 있는 값(리터럴)을 문자열로 구분한다.<br>
+            자바 스크립트의 내장 객체인 String 이 가지는 기본 함수 요소들</p>
+            <button type="button" onclick="showStringFn();">
+              문자열 처리 함수</button>
+            <div id="area1" class="area"></div>
+    
+            <script>
+                function showStringFn(){
+                    var area1 = document.getElementById('area1');
+                    var str1 = "Apple Red";
+    
+                    area1.innerHTML = "";
+                    area1.innerHTML +=
+                     "toUpperCase() : " + str1.toUpperCase()+"<br>";
+    
+                    area1.innerHTML +=
+                     "toLowerCase() : " + str1.toLowerCase()+"<br>";
+    
+                    area1.innerHTML +=
+                     "length : " + str1.length + "<br>";
+                    
+                    area1.innerHTML +=
+                     "indexOf() 문자열 'e'의 위치 : " 
+                     + (str1.indexOf('e')+1) + "<br>";
+    
+                    area1.innerHTML +=
+                     "lastIndexOf() 뒤에서부터의 'e'의 위치 : "
+                     + (str1.lastIndexOf('e')+1) + "<br>";
+    
+                     for(var i = 0 ; i < str1.length; i++){
+                         area1.innerHTML +=
+                            i+"번째 인덱스 : "+str1.charAt(i) + "<br>";
+                     }
+    
+                    area1.innerHTML += "문자열의 일부만 출력 : "
+                      + str1.substring(6, 9) + "<br>";
+    
+                    var str2 = "딸기, 복숭아, 오렌지, 무화과, 바나나";
+    
+                    var fruits = str2.split(", ");
+    
+                    area1.innerHTML += "str2의 split 결과 : "
+                      + fruits+ "<br>";
+    
+                    console.log(fruits);
+                }
+            </script>
+    
+            <hr>
+    
+            <h3>숫자 처리 Math 객체</h3>
+            <button onclick="showMathFn();">숫자처리 Math 함수 확인하기</button>
+            <div id="area2" class="area"></div>
+    
+            <script>
+                function showMathFn(){
+                    var num1 = 123;
+    
+                    var area2 = document.getElementById('area2');
+                    
+                    area2.innerHTML = "";
+                    area2.innerHTML +=
+                      "절대값 : " +Math.abs(num1)+"<br>";
+                    area2.innerHTML +=
+                      "난수 : " +Math.random() + "<br>";
+                    area2.innerHTML +=
+                      "반올림 : " + Math.round(num1*0.1) +"<br>";
+                    area2.innerHTML += 
+                      "올림 : " + Math.ceil(num1*0.1) + "<br>";
+                    area2.innerHTML += 
+                      "내림 : " + Math.floor(num1*0.1) + "<br>";
+
+                }
+            </script>
+        </body>
+    </html>
