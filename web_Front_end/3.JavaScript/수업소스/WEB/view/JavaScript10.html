@@ -1,0 +1,88 @@
+<html>
+    <head>
+        <title>함수 2</title>
+        <style>
+        p{
+            width:500px;
+            height:200px;
+            border:3px solid darkblue;
+            background: lightgoldenrodyellow;
+        }
+        </style>
+    </head>
+    <body>
+        <h1>함수 2</h1>
+
+        <h3>함수를 매개 변수로 전달하기</h3>
+        <p>함수도 하나의 자료형 이기 때문에 매개 변수로 전달할 수 있다.</p>
+
+        <h4>익명함수를 매개변수로 전달하기</h4>
+        <p id="p1"></p>
+
+        <script>
+            function callFnTenTimes(otherFn){
+                // 다른 함수를 매개 변수로 받아 10번 실행하는 함수 만들기
+                alert("Hello");
+
+                for(var i = 0; i < 10; i++){
+                    otherFn(i);
+                }
+            }
+
+            // 익명 함수를 통해 바로 실행하기
+            callFnTenTimes(function(i){
+                p1.innerHTML += (i+1) + "번째 호출! <br>";
+            });
+
+        </script>
+
+        <hr>
+
+        <h4>선언적 함수를 매개 변수로 전달하기</h4>
+        <button onclick="callJustFn(justFn);">실행 확인</button>
+        <p id="p2"></p>
+
+        <script>
+            function callJustFn(otherFn){
+                for(var i = 10; i > 0 ; i--){
+                    otherFn(i);
+                }
+
+                alert("쿠콰쾅!");
+            }
+
+            function justFn(i){
+                if(i > 5){
+                    alert(i + "번만 더 누르면 터집니다!!!");
+                }else if( i > 3){
+                    alert("분명히 터집니다 \n전 경고 했어요!!!");
+                }else if( i > 1 ){
+                    alert("진짜 터집니다, 책임 못져요 !!!");
+                }else{
+                    alert("망했다, 수고하세요~~~");
+                }
+            }
+        </script>
+
+        <h4>익명함수의 결과를 반환하는 방법</h4>
+
+        <input type="text" id="name">
+        <button onclick="returnFn()();">실행 확인</button>
+        
+
+        <script>
+            function returnFn(){
+                var name = document.getElementById('name').value;
+
+                // return function(){
+                //     alert(name + "님, 환영합니다!");
+                // }
+                return ()=>{alert(name + "님, 환영합니다!");}
+            }
+        </script>
+
+        <br><br><br>
+        <br><br><br>
+        <br><br><br>
+    </body>
+</html>
