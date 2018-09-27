@@ -101,7 +101,7 @@
         	<img class="bundle" src="../resource/images/hanoi.gif" alt="이미지 예시2">
 	PS1 : 이 문제는 취업 코딩 테스트 문제로도 종종 출제 됩니다.<br>PS2 : 함수 내부에서 자기 자신을 호출하는 재귀함수의 개념을 활용합시다.</p>
 	원판 개수 : <input type="number" id="hanoi" min="1" max="5" >&nbsp;개&nbsp;&nbsp;
-   <button onclick="hanoiStart(3, 'A', 'C', 'B');">퍼즐 풀기</button><br>
+   <button onclick="hanoiStart(document.getElementById('hanoi').value, 'A', 'C', 'B'); hanoiend(document.getElementById('hanoi').value);">퍼즐 풀기</button><br>
     <br>
     <div class="division" id="bundle_hanoi">
        <br>
@@ -117,7 +117,9 @@
 	<br><br>
 	<br><br><br><br>
 <script type="text/javascript">
-    cnt = 0;
+    var divHanoi = document.getElementById('bundle_hanoi');
+    cnt = 1;
+    
     function finish(obj){
         obj.style.color ="MidnightBlue";
         document.getElementById('bun').style.display = "block";
@@ -125,26 +127,29 @@
     
     function hanoiStart(n, from, by, to){
         // 함수의 로직을 작성하세요.
-        var num = document.getElementById('hanoi');
-
-        if(n === 1){
-            move(n, from, to);
-        }
-        else{
+        
+        if(n > 5){
+            print("5를 초과 할 수 없습니다.");
+        }else if(n >= 1){
             hanoiStart(n-1 ,from, to, by);
-            move(n, from, to);
+            print("원판[" + n +"] : " + from + " -------> " + to);
+            cnt++;
             hanoiStart(n-1 ,by, from, to);
         }
     };
 
-    function move(n, from, to){
-        cnt++;
-        print("원판[" + n +"] : " + from + " -------> " + to);
+    function hanoiend(num){
+        if(num <= 5){
+            print("--------------");
+            print("총 원판 : " + num + " 개");
+            print("최소 이동 횟수 : " + cnt + " 번 <br><br>");
+        }
+
+        cnt = 1;
     }
 
     function print(str){
-        var divHanoi = document.getElementById('bundle_hanoi');
-        divHanoi.innerHTML += str + " count : " + cnt +  " <br>";
+        divHanoi.innerHTML += str + " <br>";
     }
 </script>
  </body>
