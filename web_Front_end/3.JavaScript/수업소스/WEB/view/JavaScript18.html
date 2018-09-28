@@ -1,0 +1,116 @@
+<html>
+    <head>
+        <title>DOM</title>
+    </head>
+    <style>
+        .area{
+            width : 800px;
+            height : auto;
+            border : 3px solid black;
+            padding : 5px;
+            background: ivory;
+        }
+    </style>
+    <body>
+        <h1>DOM</h1>
+        <p>현재 웹 문서를 다루는 객체</p>
+        <h3>텍스트가 있는 노드(태그,요소) 생성</h3>
+        <button onclick="test1();">실행 확인</button>
+        <div id="area1" class="area"></div>
+
+        <script>
+            function test1(){
+                // element 생성
+                var title = document.createElement('h3');
+
+                // textNode 생성
+                var textNode = document.createTextNode('안시성');
+
+                // 노드와 엘리먼트(요소) 결합하기 
+                title.appendChild(textNode);
+                area1.appendChild(title);
+
+            }
+        </script>
+
+        <h3>텍스트가 아닌 노드 생성하기</h3>
+        <button onclick="test2();">실행 확인</button>
+        <div id="area2" class="area"></div>
+
+        <script>
+            function test2(){
+                var image = document.createElement('img');
+
+                // img의 속성
+                image.src = "http://img1.daumcdn.net/thumb/C155x225/?fname=http%3A%2F%2Ft1.daumcdn.net%2Fmovie%2F8d6743476fdf438e846ccab9ac59b1491537322852509";
+                image.width = 200;
+                image.height = 320;
+
+                // 없는 속성은 부여할 수 없다.
+                image.myProperty = 123;
+
+                // 없는 속성도 강제로 부여할 경우
+                image.setAttribute("myProperty", 123);
+
+                area2.appendChild(image);
+            }
+        </script>
+
+        <h3>innerHTML</h3>
+        <button onclick="test3();">실행 확인</button>
+        <div id="area3" class="area">
+            <table id="board">
+                <thead>
+                    <tr>
+                        <th>글 번호</th>
+                        <th>글 제목</th>
+                        <th>작성자</th>
+                        <th>조회수</th>
+                        <th>작성일자</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+
+        <script>
+            var boardNo = 1;
+
+            function test3(){
+                var title = "제목입니다.";
+                var writer = "user01";
+                var readCount = 10;
+                var writeDate = new Date();
+
+                board.innerHTML += 
+                    "<tr><td>" + (boardNo++) + "</td>"
+                    + "<td>" + title + "</td>"
+                    + "<td>" + writer + "</td>"
+                    + "<td>" + readCount + "</td>"
+                    + "<td>" + writeDate.getFullYear() +
+                         "-" + (writeDate.getMonth()+1) +
+                         "-" + writeDate.getDate() + "</td></tr>";            }
+        </script>
+
+        <h3>스타일 지정하기</h3>
+        <button onclick="test4();">실행 확인</button>
+        <div id="area4" class="area" style="height:150px;"></div>
+
+        <script>
+            function test4(){
+                area4.style.backgroundColor = "green";
+                area4.style.borderRadius = "50px";
+                area4.style.transition = "all 2s";
+            }
+        </script>
+
+        <h3>노드 삭제</h3>
+        <button onclick="test5();">실행 확인</button>
+        <div id="area5" class="area" style="height:300px;"></div>
+
+        <script>
+            function test5(){
+                area5.remove();
+            }
+        </script>
+    </body>
+</html>

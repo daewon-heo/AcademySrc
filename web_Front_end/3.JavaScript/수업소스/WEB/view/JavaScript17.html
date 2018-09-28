@@ -1,0 +1,206 @@
+<html>
+    <head>
+        <title>Window 객체</title>
+        <style>
+            .area{
+                width : 800px;
+                height : auto;
+                border : 3px solid black;
+                background: lightyellow;
+                padding : 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>window 객체 (Browser Object Model)</h1>
+        <p>window 객체는 자바스크립트가 가지는 브라우저 최상위 객체이며,<br>
+            크게 BOM과 DOM으로 나누어 진다.<br>
+            BOM (Browser Object Model) : <br>
+            location 객체, navigation 객체, history 객체, screen 객체 ...<br>
+            DOM (Document Object Model) : <br>
+            document 객체
+        </p>
+
+        <h3>window 객체</h3>
+        <p>브라우저 창 설정에 대한 객체</p>
+        <button onclick="test1();">네이버로 가기</button>
+        <button onclick="test2();">다음으로 가기</button>
+
+        <script>
+            function test1(){
+                // 새창을 열 대 사용하는 함수
+                // window.open('주소', 'open방식', '형태');
+                // 각각 브라우저별로 선언 방식이 다르기 때문에
+                // 사용에 주의하여야 한다.
+                // window.open();
+
+                window.open(
+                    "https://www.naver.com",
+                    '네이버',
+                    'location=0,resizable=0,menubar=0,status=0,toolbar=0',
+                    false
+                );
+            }
+
+            function test2(){
+                window.open(
+                    'https://www.daum.net',
+                    '다음',
+                    'location=no',
+                    false
+                )
+            }
+        </script>
+
+        <h3>window 객체의 timer 함수</h3>
+        <h4>setTimeout();</h4>
+        <button onclick="test3();">실행 확인</button>
+        <script>
+            function test3(){
+                var myWindow = window.open();
+
+                myWindow.alert("3초후 이 페이지는 종료됩니다.");
+
+                window.setTimeout(
+                    function(){
+                        myWindow.alert("뻥~~~ 페이지가 종료됩니다!");
+                        myWindow.close();
+                        // myWindow.alert("10분간 쉴게요~~~");
+                    }, 3000
+                );
+            }
+        </script>
+
+        <h4>setInterval()</h4>
+        <button onclick="test4();">실행 확인</button>
+        <div id="area4" class="area"></div>
+        <script>
+            function test4(){
+                window.setInterval(
+                    function(){
+                        var date = new Date();
+
+                        area4.innerHTML = 
+                            date.getHours() + " : " 
+                          + date.getMinutes() + " : "
+                          + date.getSeconds(); 
+                    }, 1000
+                )
+            }
+        </script>
+
+        <h4>clearInterval()</h4>
+        <button onclick="test5();">실행 확인</button>
+        <div id="area5" class="area"></div>
+        <script>
+            function test5(){
+                var count = 10;
+
+                var intervalCnt = window.setInterval(
+                    function(){
+                        area5.innerHTML = "countDown : " + count--;
+
+                        setTimeout(function(){
+                            clearInterval(intervalCnt);
+
+                            area5.innerHTML = "카운트다운 종료!";
+                        }, 10000);
+                    }  
+                );
+            }
+        </script>
+
+        <hr>
+
+        <h3>screen 객체</h3>
+
+        <p>웹 브라우저의 화면이 아닌 운영체제 자체의 (모니터 화면 기준의) 속성을 <br>
+            담당하는 객체</p>
+        <button onclick="test6();">실행 확인</button>
+        <script>
+            function test6(){
+                var width = screen.width;
+                var height = screen.height;
+
+                childWindow = window.open("","","width=800,height=500");
+
+                // childWindow.resizeTo(width, height);
+                setInterval(function(){
+                    childWindow.resizeBy(-20,-20);
+                    childWindow.moveBy(10,10);
+                }, 500);
+
+                console.log("현재 화면의 길이 : " + screen.width);
+                console.log("현재 화면의 높이 : " + screen.height);
+                console.log("실제화면서에 사용 가능한 길이 " + screen.availWidth);
+                console.log("실제화면서에 사용 가능한 높이 " + screen.availHeight);
+                console.log("화면에서 사용 가능한 색상 수 : " + screen.colorDepth);
+                console.log("한 픽셀 당 표현 가능한 비트 수 : " + screen.pixelDepth);
+            }
+        </script>
+
+
+        <hr>
+
+        <h3>location 객체</h3>
+
+        <p>브라우저 주소 표시줄과 관련된 객체</p>
+        <button onclick="test7();">실행 확인</button>
+        <div id="area7" class="area"></div>
+
+        <script>
+            function test7(){
+                for(var i in location){
+                    area7.innerHTML += 
+                        "key : " + i + " value : " + location[i] + "<br>";
+                }
+            }
+        </script>
+
+        <br><br>
+
+        <button onclick="location='https://www.naver.com';">네이버로 가기</button>
+        <button onclick="location.href='https://www.naver.com';">네이버로 가기</button>
+
+        <br><br>
+
+        <button onclick="location=location">새로 고침</button>
+        <button onclick="location.href=location.href">새로 고침</button>
+        <button onclick="location.reload()">새로 고침</button>
+
+        <br><br>
+
+        <button onclick="location.assign('https://www.google.com')">구글로 가기</button>
+
+        <!-- replace는 뒤로 가기가 불가능하다 -->
+        <button onclick="location.replace('https://www.google.com')">구글로 가기</button>
+
+        <hr>
+
+        <h3>navigator 객체</h3>
+        <p>웹 페이지를 실행하는 브라우저의 정보를 가지는 객체</p>
+
+        <button onclick="test8();">실행 확인</button>
+        <div id="area8" class="area"></div>
+
+        <script>
+            function test8(){
+                var str = "";
+
+                for( var i in navigator){
+                    str += "key : " + i + " / value : " 
+                        + navigator[i] + "<br>";
+                }
+                area8.innerHTML = str;
+
+                console.log("브라우저 코드 명 : " + navigator.appCodeName);
+                console.log("브라우저 이름 : " + navigator.appName);
+                console.log("브라우저 전체 정보 : " + navigator.userAgent);
+                console.log("브라우저 언어 : " + navigator.language);
+                console.log("현재 사용중인 운영체제 : " + navigator.platform);
+            }
+        </script>
+        
+
+    </body>
+</html>

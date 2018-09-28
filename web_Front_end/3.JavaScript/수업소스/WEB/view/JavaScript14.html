@@ -1,0 +1,150 @@
+<html>
+    <head>
+        <title>객체 배열</title>
+        <style>
+            .area {
+                width : 500px;
+                height : auto;
+                border : 3px solid crimson;
+                background: honeydew;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>객체 배열</h1>
+        <h3>객체와 배열을 사용하여 데이터 관리하기</h3>
+        <button onclick="test1();">실행 확인</button>
+        <div id="area1" class="area"></div>
+
+        <script>
+            function test1(){
+                var student0 = {
+                    name : "홍길동",
+                    java : 60,
+                    oracle : 90,
+                    html : 60,
+                    css : 70,
+                }
+
+                var student1 = {
+                    name : "고길동",
+                    java : 70,
+                    oracle : 80,
+                    html : 30,
+                    css : 80,
+                }
+
+                var student2 = {
+                    name : "김길동",
+                    java : 80,
+                    oracle : 40,
+                    html : 50,
+                    css : 50,
+                }
+
+                var student3 = {
+                    name : "박길동",
+                    java : 90,
+                    oracle : 70,
+                    html : 100,
+                    css : 90,
+                }
+
+                var student4 = {
+                    name : "최길동",
+                    java : 100,
+                    oracle : 20,
+                    html : 80,
+                    css : 90,
+                }
+
+                var students = [];
+
+                students.push(student0);
+                students.push(student1);
+                students.push(student2);
+                students.push(student3);
+                students.push(student4);
+
+                console.log(students);
+
+                // 각 객체별로 메소드(함수) 추가하기
+                for(var i in students){
+                    students[i].getSum = function(){
+                        return this.java + this.oracle + this.html + this.css;
+                    }
+
+                    students[i].getAvg = function() {
+                        return this.getSum() / students.length;
+                    }
+                }
+
+                console.log(students);
+
+                // for in 과 with를 사용하여 학생 정보 출력하기
+                // 이름 : 000 , 총점 : XX , 평균 : NN
+                for(var i in students){
+                    with(students[i]){
+                        area1.innerHTML += "이름 : " + name
+                                        + " 총점 : " + getSum()
+                                        + " 평균 : " + getAvg() + "<br>";
+                    }
+                }
+            }
+        </script>
+
+        <hr>
+
+        <h3>자바스크립트 생성자 함수 구현하기</h3>
+        <p>자바 스크립트에서도 new 키워드를 사용하여 객체를 생성할 수 있다.</p>
+
+        <button onclick="test2(소);">실행 확인</button>
+        <div id="area2" class="area"></div>
+
+        <script>
+            // 자바 스크립트 생성자
+            function Student(name, java, oracle, html, css){
+                // 1. 필드 속성을 정의
+                this.name = name;
+                this.java = java;
+                this.oracle = oracle;
+                this.html = html;
+                this.css = css;
+
+                // 클로져를 통한 객체 함수 정의
+
+                this.getSum = function(){
+                    return this.java + this.oracle 
+                            + this.html + this.css;
+                }
+
+                this.getAvg = function(){
+                    return this.getSum() / 4;
+                }
+
+                this.toString = function(){
+                    return "이름 : " + name 
+                        + " 총점 : " + this.getSum()
+                        + " 평균 : " + this.getAvg() + "<br>";
+                }
+            }
+
+            var students2 = [];
+
+            function test2(){
+                var students = new Student(
+                    prompt("이름을 입력하세요."),
+                    parseInt(prompt("Java 성적")),
+                    parseInt(prompt("Oracle 성적")),
+                    parseInt(prompt("Html 성적")),
+                    parseInt(prompt("CSS3 성적")),
+                );
+
+                area2.innerHTML += students.toString();
+
+                students2.push(students);
+                console.log(students2);
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,218 @@
+<html>
+    <head>
+        <title>자바스크립트 객체</title>
+        <style>
+            .area {
+                width : 800px;
+                height : auto;
+                border : 3px solid darkblue;
+                background: lightskyblue;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>자바스크립트 객체</h1>
+        <h3>객체 선언 및 호출</h3>
+        <p>자바스크립트 객체는 키와 값으로 이루어져 있으며, <br>
+        키값을 속성으로 활용하여 각각의 값을 식별한다.<br>
+        또한 선언 시에 중괄호({ })를 사용하여 선언하며,<br>
+        속성으로는 모든 자료형이 올 수 있다.</p>
+        <button onclick="test1();">실행 확인</button>
+        <div id="area1" class="area"></div>
+
+        <script>
+            function test1(){
+                var product = {
+                    pName : "peanut",
+                    type : "Snack",
+                    recipe : ["peanut", "sugar"],
+                    origin : "brazil"
+                };
+
+                console.log(product);
+
+
+                area1.innerHTML += "product : " + product + "<br>";
+
+                // 객체명['키값'] 으로 접근이 가능하다.
+                area1.innerHTML += "product['pName'] : " + product['pName'] + "<br>";
+                area1.innerHTML += "product['type'] : " + product['type'] + "<br>";
+                area1.innerHTML += "product['recipe'][0] : " + product['recipe'][0] + "<br>";
+                area1.innerHTML += "product['recipe'][1] : " + product['recipe'][1] + "<br>";
+                area1.innerHTML += "product['origin'] : " + product['origin'] + "<br>";
+
+                area1.innerHTML += "-------------------<br>";
+
+                // 객체명.키값으로도 접근이 가능하다.
+                area1.innerHTML += "product.pName : " + product.pName + "<br>";
+                area1.innerHTML += "product.type : " + product.type + "<br>";
+                area1.innerHTML += "product.recipe[0] : " + product.recipe[0] + "<br>";
+                area1.innerHTML += "product.recipe[1] : " + product.recipe[1] + "<br>";
+                area1.innerHTML += "product.origin : " + product.origin + "<br>";
+            }
+        </script>
+
+        <hr>
+
+        <h3>객체의 키 식별자 확인하기</h3>
+        <p>객체의 키 값 역시 모든 문자열을 사용할 수 있다.<br>
+        단, 식별자로 사용할 수 없는 특수 문자가 들어 있을 경우<br>
+        무조건 대괄호 방식으로 식별자를 선택해야 한다.</p>
+
+        <button onclick="test2();">실행 확인</button>
+        <div id="area2" class="area"></div>
+
+        <script>
+            function test2(){
+                var objTest = {
+                    'I LOVE JAVASCRIPT' : '고길동',
+                    'I HATE !@#$%^&*()' : '홍길동',
+                }                                                
+
+                // area2.innerHTML += objTest."I HATE !@#$%^&*()";
+
+                area2.innerHTML += objTest['I LOVE JAVASCRIPT'] + "<br>";
+                area2.innerHTML += objTest['I HATE !@#$%^&*()'] + "<br>";
+            }
+        </script>
+
+        <hr>
+
+        <h3>객체의 메소드 변수</h3>
+        <p>객체의 속성 중 함수 자료형인 속성을 호출하는 방법</p>
+        <button onclick="test3();">실행 확인</button>
+        <div id="area3" class="area"></div>
+
+        <script>
+            function test3(){
+                var dog = {
+                    name : "초롱이",
+                    eat : function(food){
+                        // 객체 내에서 다른 필드의 변수에 접근할 때에는 
+                        // 반드시 앞에 this.을 앞에 붙여야 한다!
+                        // 일반적으로 다른 프로그래밍 언어를 공부하는
+                        // 사람들이 자바스크립트 언어를 접할 때 하는
+                        // 가장 큰 실수이므로 주의해야 한다.
+                        area3.innerHTML += this.name 
+                            + '가 ' + food + '을 먹고 있네요.';
+                    }
+                }
+
+                dog.eat("내 밥");
+            }
+        </script>
+
+        <h3>객체와 반복문</h3>
+        <p>객체 안의 각 속성들을 확인할 때에 단순한 for문으로는 <br>
+            접근할 수 없고, 반드시 for in 문을 사용해야 한다.</p>
+
+        <button onclick="test4();">실행 확인</button>
+        <div id="area4" class="area"></div>
+
+        <script>
+            function test4(){
+                var fruit = {
+                    name : 'Apple',
+                    price : '30000원',
+                    origin : 'daegu',
+                    season : 'fall',
+                }
+
+                console.log(fruit);
+
+                for(var key in fruit){
+                    area4.innerHTML += key + " : " + fruit[key] + "<br>";
+                }
+            }
+        </script>
+
+        <h3>in과 with 키워드</h3>
+
+        <p>in : 객체 내부에 해당 속성이 존재하는지 확인 / contain(); <br>
+            with : 해당 객체에 대한 접근방식을 축약 해주는 키워드, <br>
+            속성 호출 시에 객체명을 생략하고자 할 때 시용한다.</p>
+
+        이름 : <input type="text" id="name"><br>
+        국어 : <input type="text" id="kor"><br>
+        수학 : <input type="text" id="mat"><br>
+        영어 : <input type="text" id="eng"><br>
+
+        <button onclick="test5();">실행 확인</button>
+        <div id="area5" class="area"></div>
+
+        <script>
+            function test5(){
+                var name = document.getElementById('name').value;
+                var kor = Number(document.getElementById('kor').value);
+                var mat = Number(document.getElementById('mat').value);
+                var eng = parseInt(document.getElementById('eng').value);
+
+                var student = {
+                    name : name ,
+                    kor : kor,
+                    mat : mat,
+                    eng : eng,
+                }
+
+                // in 키워드 확인하기
+
+                area5.innerHTML += "<b>in 키워드 확인하기</b><br>";
+                area5.innerHTML += "name 이 있나요? " + ('name' in student) + "<br>";
+                area5.innerHTML += "kor 이 있나요? " + ('kor' in student) + "<br>";
+                area5.innerHTML += "mat 이 있나요? " + ('mat' in student) + "<br>";
+                area5.innerHTML += "eng 이 있나요? " + ('eng' in student) + "<br>";
+                area5.innerHTML += "sum 이 있나요? " + ('sum' in student) + "<br>";
+
+                area5.innerHTML += 'name : ' + student.name + "<br>";
+                area5.innerHTML += 'kor : ' + student.kor + "<br>";
+                area5.innerHTML += 'mat : ' + student.mat + "<br>";
+                area5.innerHTML += 'eng : ' + student.eng + "<br>";
+                area5.innerHTML += 'sum : ' + (student.kor + student.mat + student.eng) + "<br>";
+                area5.innerHTML += 'avg : ' + (student.kor + student.mat + student.eng)/3 + "<br>";
+
+                area5.innerHTML += "<h4> with 키워드 사용하기 </h4>";
+                
+                with(student){
+                    area5.innerHTML += 'name : ' + name + "<br>";
+                    area5.innerHTML += 'kor : ' + kor + "<br>";
+                    area5.innerHTML += 'mat : ' + mat + "<br>";
+                    area5.innerHTML += 'eng : ' + eng + "<br>";
+                    area5.innerHTML += 'sum : ' + (kor + mat + eng) + "<br>";
+                    area5.innerHTML += 'avg : ' + (kor + mat + eng)/3 + "<br>";
+                }
+            }
+        </script>
+
+        <hr>
+
+        <h3>객체에 필드 추가, 삭제하기</h3>
+        <p>처음 객체를 생성한 이후에도 속성을 추가, 삭제 할 수 있다.<br>
+            (동적 속성 삽입, 삭제)</p>
+
+            <button onclick="test6();">실행 확인</button>
+            <div id="area6" class="area"></div>
+
+            <script>
+                function test6(){
+                    // 속이 빈 객체 생성
+                    var student = {};
+
+                    console.log(student);
+                    
+                    // 객체의 필드 추가 시
+                    student.name = "홀길동";
+                    student.hobby = "코딩공부";
+                    student.gender = 'M';
+                    student.wish = "급여인상";
+
+                    // 객체의 필드 삭제 시
+                    delete(student.wish);
+                }
+            </script>
+
+
+        <br><br><br><br><br>
+        <br><br><br><br><br>
+        <br><br><br><br><br>
+    </body>
+</html>

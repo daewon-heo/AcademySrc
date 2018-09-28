@@ -1,0 +1,166 @@
+<html>
+    <head>
+        <title>자바스크립트 내장 함수</title>
+        <style>
+            .area {
+                width : 500px;
+                height : 250px;
+                border : 3px solid black;
+                background: lightcyan;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>자바스크립트 내장 함수</h1>
+        <h3>인코딩과 디코딩에 관련된 함수들</h3>
+        <p>
+            escape : 영문 문자열, 숫자, 일부 특수문자(@,*,-,_,.,/)를
+                      제외한 모든 문자를 인코딩하는 함수<br>
+            encodeURI : escape에서 인테넛 주소에 사용되는 
+                       일부 특수문자(:, ;, /, ?, = , &)를 제외한 모든 문자를
+                       인코딩하는 함수<br>
+            encodeURIComponent : 알파벳과 숫자를 제외한 모든 문자를 인코딩하는 함수
+                                (EUC-KR -> UTF->8)
+        </p>
+
+        <p>
+            unescape : escape로 인코딩된 문자를 디코딩하는 함수<br>
+            decodeURI : encodeURI로 인코딩된 문자를 디코딩하는 함수<br>
+            decodeURIComponent : encodeURIComponent로 인코딩된 문자를 디코딩하는 함수<br>
+        </p>
+
+        <button onclick="test1();">실행 확인</button>
+        <div id="area1" class="area"></div>
+
+        <script>
+            function test1(){
+                // / = 해당 문서 내의 웹 문서 표기 방식(경로)
+                // ? =  쿼리스트링 (주소에 접근할 때 함계 전송하는 데이터를 표기하는 특수문자)
+                // ?key1=value1[&key2=value2&key3=value3]
+
+                var URI = "https://www.naver.com?test=홍길동";
+
+                var esURI = escape(URI);
+                var enURI = encodeURI(URI);
+                var enURIC = encodeURIComponent(URI);
+
+                area1.innerHTML += "escape() : " + esURI + "<br><br>";
+                area1.innerHTML += "encodeURI() : " + enURI + "<br><br>";
+                area1.innerHTML += "encodeURIComponent() : " + enURIC + "<br><br>";
+
+                area1.innerHTML += "----------------------------- <br>";
+
+                area1.innerHTML += "unescape() : " + unescape(esURI) + "<br><br>";
+                area1.innerHTML += "encodeURI() : " + decodeURI(enURI) + "<br><br>";
+                area1.innerHTML += "encodeURIComponent() : " + decodeURIComponent(enURIC) + "<br><br>";
+            }
+
+        </script>
+
+        <hr>
+
+        <h3>eval() 함수 </h3>
+        <p>내부의 문자열을 자바스크립트 코드로 변환하여 실행하는 함수</p>
+
+        숫자 1 : <input type="number" id="num1"> <br>
+        숫자 2 : <input type="number" id="num2"> <br>
+
+        <button onclick="test2();">실행 확인</button>
+        <div id="area2" class="area"></div>
+
+        <script>
+            function test2(){
+                var testEval = "";
+
+                // var number1 = parseInt(document.getElementById('num1').value);
+                // var number2 = parseInt(document.getElementById('num2').value);
+
+                testEval += "var number1 = parseInt(document.getElementById('num1').value);"
+                         + "var number2 = parseInt(document.getElementById('num2').value);"
+                         + "var sum = number1 + number2;";
+
+                // var sum = number1 + number2;
+
+                testEval += "area2.innerHTML += number1 + '과' + number2 + '의 합은 ' "
+                    + " + sum + '입니다.'";
+                
+                eval(testEval);
+
+                alert("두 수의 합은 무엇일까요 ? ");
+            }
+        </script>
+
+        <hr>
+
+        <h3>infinity 와 NaN</h3>
+        <p>대부분의 프로그래밍 언어는 0으로 숫자를 나누면 
+            자동으로 오류가 발생하고, 프로그램이 강제 종료된다.<br>
+            하지만 자바스크립트는 0으로 숫자를 나누면 infinity라는 결과를 출력한다.<br>
+            또한 계산의 결과가 숫자가 아니면 NaN(Not a Number)라는 결과를 출력한다.
+        </p>
+        <button onclick="test3();">실행 확인</button>
+        <div id="area3" class="area"></div>
+
+        <script>
+            function test3(){
+                var num1 = 10/0;
+                var num2 = 10/'a';
+
+                area3.innerHTML += '10 / 0 = ' + num1 + "<br>";
+                area3.innerHTML += '10 / a = ' + num2 + "<br>";
+                area3.innerHTML += 'isFinite() = ' + isFinite(num1) + "<br>";
+                area3.innerHTML += 'num1 == Infinyry ?  ' + (num1 == Infinity) + "<br>";
+                
+                // infinity / -infinity
+
+                var num3 = -10 / 0;
+                area3.innerHTML += 'num3 == Infinyry ?  ' + (num3 == Infinity) + "<br>";
+                area3.innerHTML += 'num3 == -Infinyry ?  ' + (num3 == -Infinity) + "<br>";
+                area3.innerHTML += 'isNaN() : ' + isNaN(num2) + "<br>";
+                area3.innerHTML += 'num2 == NaN()? ' + (num2 == NaN) + "<br>";
+            }
+        </script>
+
+        <hr>
+
+        <h3>Number(), parseInt(), parseFloat()</h3>
+        <p>
+            Number() 함수는 숫자로 변경할 수 없을 대 무조건 NaN를 반환한다<br>
+            하지만 parseInt(), parseFloat()은 숫자로 변환할 수 있는 부분은 최대한 
+            숫자로 변환한 뒤에 값을 반환한다.
+        </p>
+        <button onclick="test4();">실행 확인</button>
+        <div id="area4" class="area"></div>
+
+        <script>
+            function test4(){
+                var money = "1000원";
+                var dollar = '1.5$';
+
+                area4.innerHTML += "Number(money) " + Number(money) + "<br>";
+                area4.innerHTML += "Number(dollar) " + Number(dollar) + "<br>";
+                area4.innerHTML += "parseInt(money) " + parseInt(money) + "<br>";
+                area4.innerHTML += "parseInt(dollar) " + parseInt(dollar) + "<br>";
+                area4.innerHTML += "parseFloat(money) " + parseFloat(money) + "<br>";
+                area4.innerHTML += "parseFloat(dollar) " + parseFloat(dollar) + "<br>";
+
+                // 8진수 : 숫자 앞에 0
+                area4.innerHTML += "parseInt(0123) = " + parseInt(0123) + "<br>";
+
+                // 16진수 : 숫자 앞에 0x
+                area4.innerHTML += "parseInt(0x0123) = " + parseInt(0x0123) + "<br>";
+
+                // 10진수 : 일반 숫자
+                area4.innerHTML += "parseInt(123) = " + parseInt(123) + "<br>";
+
+                // 특정 진수로 변환하기
+                // parseInt(바꿀 값, 바꿀 진수); = 10WLSJNFH QHRLGKS RUFRHK
+                area4.innerHTML += "parseInt('FF', 16)) = " + parseInt('FF', 16) + "<br>";
+                area4.innerHTML += "parseInt('52', 8) = " + parseInt('52', 8) + "<br>";
+                area4.innerHTML += "parseInt('10', 2) = " + parseInt('10', 2) + "<br>";
+
+
+            }
+        </script>
+    </body>
+</html>
