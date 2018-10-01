@@ -1,0 +1,124 @@
+<html>
+    <head>
+        <title>이벤트</title>
+        <style>
+            .area{
+                width : 500px;
+                height : auto;
+                border : 3px solid black;
+                background: lemonchiffon;
+                padding : 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>이벤트</h1>
+        <p>이벤트 등록 방법 : <br>
+            - 고전 이벤트 등록 모델 : 요소의 속성을 통해 이벤트를 바인드 하는 방법 <br>
+            - 인라인 이벤트 등록 모델 : 요소를 HTML 태그로 선언 시 
+                                      이벤트를 함께 속성으로써 등록하는 방법 <br>
+            - 표준 이벤트 등록 모델 : addEventListener('이벤트명', '동작할 함수'); <br>
+        </p>
+
+        <h3>고전 이벤트 모델</h3>
+        <button id="btn1">test1() 실행</button>
+        <button id="btn2">test2() 실행</button>
+        <div id="area1" class="area"></div>
+
+        <script>
+            var myBtn1 = document.getElementById('btn1');
+            var myBtn2 = document.getElementById('btn2');
+
+            // test1()
+            myBtn1.onclick = function(){
+                area1.innerHTML += "btn1이 클릭 되었습니다. <br>";
+            }
+
+            // test2()
+            myBtn2.onclick = function(){
+                area1.innerHTML = "btn2이 클릭되면서 btn1의 이벤트를"
+                                 + " 제거하였습니다!";
+
+                // 기존에 존재하던 이벤트를 null로 덮어 씌움으로써
+                // 바인드된 이전의 이벤트 핸들러를 제거한다.
+                myBtn1.onclick = null;
+            }
+        </script>
+
+        <h3>표준 이벤트 등록 모델</h3>
+        <p>이벤트 발생 객체를 전달받아 속성을 변경하는 핸들러 작성!</p>
+        <button id="btn3">실행 확인</button>
+        <div id="area2" class="area"></div>
+
+        <script>
+            var myBtn3 = document.getElementById('btn3');
+
+            // onclick -- > click == 'on'이 제거된다.
+            myBtn3.addEventListener('click', function(element){
+                // 1.
+                // this를 통해 이벤트가 발생한 요소 자신을
+                // 참조 할 수 있다.
+                this.style.backgroundColor = "darkblue";
+                this.style.color = "white";
+
+                // 2.
+                // 핸들러 함수 선언 시 직접 해당 요소를 매개인자로
+                // 전달하여 참조하는 방법
+                // for(var i in element){
+                //     area2.innerHTML += 
+                //         "key : " + i + "value : " + element[i] + "<br>";
+                // }
+            });
+        </script>
+
+        <h3>인라인 이벤트 등록 모델</h3>
+        <button onclick="test4();">실행 확인</button>
+        <script>
+            function test4(){
+                alert("인라인 이벤트가 실행됩니다.");
+            }
+        </script>
+
+        <hr>
+
+        <h3>기본 이벤트 submit 제거 및 유효성 검사하기</h3>
+        <p>a태그는 클릭하면 다른 페이지로 이동한다.<br>
+        form 태그 안의 submit 버튼은 클릭했을 때 자동으로 입력한 <br>
+        내부의 양식을 특정 페이지로 전달하고 해당 페이지로 새로 고침한다.</p>
+
+        <form id="memberJoin">
+            이름 : <input type="text" id="name"> <br>
+            아이디 : <input type="text" id="userid"> <br>
+            비밀번호 : <input type="password" id="userpwd"> <br>
+            비밀번호 확인 : <input type="password" id="userpwd2"> <br>
+
+            <input type="submit" value="제출" onclick="return test5();">
+        </form>
+        <script>
+
+            function test5(){
+                var name = document.getElementById('name').value;
+                
+                console.log(name);
+                console.log(userid.value);
+                console.log(userpwd.value);
+                console.log(userpwd2.value);
+
+                // 비밀번호 입력값이 올바른지 확인하기
+                // (유효성 체크)
+                if(userpwd.value.length > 0 && userpwd.value == userpwd2.value){
+                    alert("올바른 비밀번호 입니다.");
+                } else {
+                    alert("잘못된 비밀번호 입니다.");
+                    userpwd.select();
+                }
+                
+                // 제출 버튼이 클릭되어도 페이지 이동이 발생되지 않게
+                // 처리하려면 return false를 명시하여
+                // 값의 전달을 막으면 된다.
+
+                return false;
+            }
+        </script>
+    </body>
+</html>
