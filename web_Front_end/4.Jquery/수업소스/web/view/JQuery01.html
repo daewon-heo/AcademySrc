@@ -1,0 +1,88 @@
+<html>
+    <head>
+        <title>제이쿼리 개요</title>
+        <!-- 직접 다운로드 받아 연결하는 방법 -->
+        <!-- 
+            (Uncompressed - 개발자 전용)
+            일반 JS 파일 : 개발자나 사용하는 사람이 보기 쉽도록
+                          주석, 코드 정렬등을 활용하여 가시성을 
+                          유지하는 파일
+            (Compressed - 배포 전용)
+            min JS 파일 : 소스코드의 주석, 띄어쓰기, 구분자, 변수명을
+                          최소화 및 간소화하여 네트워크 상으로 데이터를 
+                          전달할 때 최소한도의 데이터 전달로 효율을 높이는 파일
+         -->
+        <script type="text/javascript" src="../resource/js/jquery-3.3.1.min.js"></script>
+
+        <!-- CDN 방식으로 연결하기 -->
+        <!-- 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+         -->
+    </head>
+    <body>
+        <h1>제이쿼리 개요</h1>
+        <h3>제이쿼리란?</h3>
+        <p>존 레식에 의해 개발된 JS 경량화 라이브러리로, <br>
+           복잡한 자바스크립트 구문을 짧고 쉽게 개발할 수 있도록 구현된 <br>
+           라이브러리이다.
+           <br><br>
+           -- JQuery 장점 -- <br>
+           1. DOM과 관련된 스크립트를 쉽게 구현할 수 있다. <br>
+           2. ajax(비동기)통신, 이벤트 처리등을 폭넓게 지원한다. <br>
+           3. JQuery와 관련된 확장형 플러그인, 오픈 API를 
+              다양하게 지원하며, 이를 통해 차트, 슬라이드, 애니메이션을 간단하게 <br>
+              구현할 수 있다.
+        </p>
+        <hr>
+
+        <h3>제이쿼리 연결방법</h3>
+        <p id="p1">
+            1. JQuery 웹사이트에서 JS파일을 다운로드 한 후 연결하는 방법<br>
+            2. CDN(Content Delivery Network)을 통해 연결하는 방법
+        </p>
+        <script>
+            // JS 의 경우
+            // document.getElementById('p1').style.backgroundColor = 'navy';
+            // document.getElementById('p1').style.color = 'white';
+
+            // JQuery의 경우
+            // $('#p1').css('background', 'navy');
+            // $("#p1").css('color', 'white');
+
+            $("#p1").css({
+                "background" : "navy",
+                "color" : "white"
+            });
+        </script>
+
+        <hr>
+
+        <h3>$(document).ready()</h3>
+        <p id="p2">
+            현재 웹 문서를 로드한 후 ready 함수를 실행한다. <br>
+            해당 내용은 document.onload와 동일하다.
+        </p>
+
+        <script>
+            // document.onload = function() { . . . }
+
+            // 원 형태
+            // jQuery(document).ready(
+            //     function(){
+            //         alert('test text');
+            // });
+
+            // 1차 축약
+            // $(document).ready(
+            //     function(){
+            //         alert('test text2');
+            // });
+
+            // 최종 축약
+            $(function(){
+                alert('제이쿼리 최종 축약형태');
+                $("#p2").css('background', 'lightgreen');
+            });
+        </script>
+    </body>
+</html>

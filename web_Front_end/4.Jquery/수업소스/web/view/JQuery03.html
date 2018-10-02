@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <title>입력 양식 선택자</title>
+        <script src="../resource/js/jquery-3.3.1.min.js"></script>
+    </head>
+    <body>
+        <h1>입력 양식 선택자</h1>
+        <p>input 태그의 속성 중 type 속성에 따라 각각의 <br>
+           타입 속성 선택자를 사용할 수 있다.</p>
+        텍스트 상자 : <input type="text"> <br>
+        버튼 : <input type="button">
+        체크박스 : <input type="checkbox"> <br>
+        파일선택 : <input type="file"> <br>
+        이미지 : <input type="image" src="../resource/image/flower1.png"> <br>
+        패스워드 : <input type="password"> <br>
+        라디오 버튼 : <input type="radio"> <br>
+        리셋 버튼 : <input type="reset"> <br>
+        submit 버튼 : <input type="submit">
+
+        <script>
+        $(function(){
+            $('input:text').css('background', 'lightpink');
+
+            $('input:button').attr('value', "왕버튼")
+            .css({
+                'width' : '50px',
+                'height' : '50px'
+            });
+
+            $('input:checkbox').attr("checked", true)
+            .css({
+                'width': '30px',
+                'height' : '30px'
+            });
+
+            $("input:file").css('background', 'lightgreen');
+
+            $('input:image').mouseenter(function(){
+                $(this).attr('src', '../resource/image/flower2.png');
+            });
+            
+            $('input:image').mouseout(function(){
+                $(this).attr('src', '../resource/image/flower1.png');
+            });
+
+            $("input:password").css({
+                "background" : "lightskyblue",
+                "color" : "yellow"
+            });
+
+            // attr('속성명'); --> 속성값 (Getter)
+            // attr('속성명', '속성값'); ---> 속성값 변경 (Setter)
+            $("input:radio").attr("checked", true);
+
+            $("input:reset").css({
+                "background" : "black",
+                "color" : "white"
+            });
+
+            $("input:submit").css({
+                "background" : "green",
+                "color" : "purple"
+            });
+        });
+        </script>
+    </body>
+</html>

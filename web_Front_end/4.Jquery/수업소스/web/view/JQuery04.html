@@ -1,0 +1,217 @@
+<html>
+    <head>
+        <title>입력 양식 필터 선택자</title>
+        <script src="../resource/js/jquery-3.3.1.min.js"></script>
+    </head>
+    <body>
+        <h1>입력 양식 필터 선택자</h1>
+        <h3>Checkbox 상태 관련 선택자</h3>
+        운동 : 
+        <input type="checkbox" name="sports" id="soccer" value="축구"> 
+        <label for="soccer">축구</label>
+        <input type="checkbox" name="sports" id="basketball" value="농구">
+        <label for="basketball">농구</label>
+        <input type="checkbox" name="sports" id="baseball" value="야구">
+        <label for="baseball">야구</label>
+
+        <script>
+        // change : 값이 변경되었을 때 시점을 감지하여 동작하는 이벤트
+
+        $("input:checkbox").change(changeSports);
+
+        function changeSports(){
+            // 운동 종목 선택 사항 변경 시 확인할 수 있는 함수
+            // console.log($(this).prop("checked"));
+
+            if($(this).prop("checked")){
+                $(this).css({
+                    "width" : "50px",
+                    "height" : "50px"
+                });
+            }else{
+                $(this).css({
+                    "width" : "15px",
+                    "height" : "15px"
+                });
+            }
+        }
+
+        </script>
+
+        <h3>select와 option 태그의 상태에 대한 선택자</h3>
+        <select id="nation">
+            <option value="한국">한국</option>
+            <option value="중국">중국</option>
+            <option value="미국">미국</option>
+            <option value="태국">태국</option>
+            <option value="영국">영국</option>
+            <option value="남아프리카공화국">남아프리카공화국</option>
+        </select> <br>
+        선택한 국가 : <input type="text" id="result">
+
+        <script>
+            // 문서가 로드 되자마자 스크립트가 실행되도록
+            // 즉시 호출하기 
+            $(selectNation);
+
+            $("#nation").change(selectNation);
+            
+            function selectNation(){
+                var value = $('option:selected').val();
+
+                // console.log(value);
+
+                // 함수의 오버로딩
+                // $(선택자).val() : getter 의미
+                // $(선택자).val(값) : setter 의미
+
+                $("#result").val(value + "을 선택하셨습니다!");
+            }
+        </script>
+
+        <hr>
+
+        <h3>input 상태에 따른 선택자</h3>
+        활성화된 텍스트 상자 : <input type="text"> <br>
+        비활성화된 텍스트 상자 : <input type="text" disabled> <br>
+
+        활성화된 텍스트 버튼 : <input type="button" value="활성화"> <br>
+        비활성화된 텍스트 버튼 : <input type="button" value="비활성화" disabled> <br>
+        
+        <script>
+            $('input:enabled').css('background', 'lightgreen');
+            $('input:disabled').css('background', 'tomato');
+        </script>
+
+        <hr>
+
+        <h3>순서 관련 필터 선택자</h3>
+        <table>
+            <tr>
+                <th>이름</th>
+                <th>혈액형</th>
+                <th>지역</th>
+            </tr>
+            <tr>
+                <td>허대원</td>
+                <td>A</td>
+                <td>서울</td>
+            </tr>
+            <tr>
+                <td>송은지</td>
+                <td>A</td>
+                <td>경기</td>
+            </tr>
+            <tr>
+                <td>권채영</td>
+                <td>A</td>
+                <td>서울</td>
+            </tr>
+            <tr>
+                <td>이정원</td>
+                <td>A</td>
+                <td>서울</td>
+            </tr>
+            <tr>
+                <td>노영근</td>
+                <td>A</td>
+                <td>경기</td>
+            </tr>
+            <tr>
+                <td>홍민희</td>
+                <td>B</td>
+                <td>인천</td>
+            </tr>
+            <tr>
+                <td colspan="2">총원 : </td>
+                <td>6명</td>
+            </tr>
+        </table>
+
+        <script>
+            $('tr:odd').css("background", "lightgreen");
+            $('tr:even').css("background", "yellow");
+            $("tr:first").css("background", "lightskyblue");
+            $("tr:last").css({
+                "background" : "royalblue",
+                "color" : "snow"
+            });
+        </script>
+
+        <hr>
+
+        <h3>함수 형태의 필터 선택자</h3>
+        <p>nth-child() : N번째 자식 요소를 선택하는 선택자</p>
+
+        <table id="testTbl">
+                <tr>
+                    <th>이름</th>
+                    <th>혈액형</th>
+                    <th>지역</th>
+                </tr>
+                <tr>
+                    <td>허대원</td>
+                    <td>A</td>
+                    <td>서울</td>
+                </tr>
+                <tr>
+                    <td>송은지</td>
+                    <td>A</td>
+                    <td>경기</td>
+                </tr>
+                <tr>
+                    <td>권채영</td>
+                    <td>A</td>
+                    <td>서울</td>
+                </tr>
+                <tr>
+                    <td>이정원</td>
+                    <td>A</td>
+                    <td>서울</td>
+                </tr>
+                <tr>
+                    <td>노영근</td>
+                    <td>A</td>
+                    <td>경기</td>
+                </tr>
+                <tr>
+                    <td>홍민희</td>
+                    <td>B</td>
+                    <td>인천</td>
+                </tr>
+                <tr>
+                    <td colspan="2">총원 : </td>
+                    <td>
+                        <a>6 명</a>
+                    </td>
+                </tr>
+            </table>
+
+            <script>
+                $(function(){   // document.onload
+                    // n 번째에 위치한 자식 요소 선택하기
+                    $("#testTbl tr:eq(0)").css('background','yellow');
+
+                    // n 번째 반복되는 (n수열) 요소 선택하기
+                    $('#testTbl tr:nth-child(2n)').css('background', 'lightgreen');
+                    $('#testTbl tr:nth-child(3n)').css('background', 'tomato');
+
+                    // 임의의 정수 n을 초과 / 미만에 해당되는 요소 선택하기
+                    $("#testTbl tr:gt(5)").css('font-size', '20pt');
+                    $("#testTbl tr:lt(4)").css('font-size', '10pt');
+
+                    // 특정 문자열을 포함하는 요소를 선택하기
+                    $("#testTbl tr:contains('B')").css('color', 'beige');
+
+                    // 특정 태그를 포함하는 요소 선택하기
+                    $("#testTbl td:has(a)").css("color", "purple");
+
+                    // 선택자와 일치하지 않는 요소 선택하기
+                    $("#testTbl td:not(:contains('이정원'))").css({
+                            "background" : "black",
+                            "color" : "snow",
+                        });
+                });
+            </script>
+    </body>
+</html>

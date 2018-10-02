@@ -25,7 +25,7 @@
                     1. var re = /정규식/;
                     2. var re = new RegExp("정규식");
                     */
-                    var re = /\d+/;
+                    var re = /^\d+$/;
                     if(re.test(result)){
                         document.getElementById('result').innerHTML = result;    
                     }else{
@@ -49,14 +49,14 @@
                     // 이메일 검사
                     // 4글자 이상(\w = [a-zA-Z0-9_], [\w-\.]) @가 나오고
                     // 1글자 이상(주소). 글자 가 1~3번 반복됨
-                    if(!chk(/\w{4,}@\w{1,}\.\w{1,3}/,email,"이메일을 확인하세요"))
+                    if(!chk(/^\w{4,}@\w{1,}\.\w{1,3}$/,email,"이메일을 확인하세요"))
                         return false;
                    
                     // 아이디 검사
                     // 첫 글자는 반드시 영문 소문자, 4~12자로 이루어지고, 숫자가
                     // 하나 이상 포함되어야 한다. 영문소문자와 숫자로만 이루어져야한다.
                     // \d : [0-9]와 같다.       {n,m} : n에서 m까지 글자수
-                    if(!chk(/[a-z]{1}([a-z]|\d+){3,11}/,id,"아이디를 확인하세요"))
+                    if(!chk(/^[a-z]{1}([a-z]|\d+){3,11}$/,id,"아이디를 확인하세요"))
                         return false;
                     
                     // 비밀번호 확인 검사
@@ -66,31 +66,27 @@
                     // 이름 검사
                     // 2글자 이상, 한글만
                     // 통과하지 못하면 한글로 2글자 이상을 넣으세요~ alert 출력!
-                    if(!chk(/[가-힣]{2,}/, name, "이름을 2글자 이상을 넣으세요~"))
+                    if(!chk(/^[가-힣]{2,}$/, name, "이름을 2글자 이상 한글을 넣으세요~"))
                         return false;
             
                     // 전화번호 검사
              
                     // 전화번호 앞자리는 2~3자리 숫자, 두번째 자리는 3~4자리 숫자
                     // 세번째 자리는 4자리 숫자
-                    if(!chk(/\d{2,3}/,tel1, "전화번호 2~3자리 숫자를 넣으세요"))
+                    if(!chk(/^\d{2,3}$/,tel1, "전화번호 2~3자리 숫자를 넣으세요"))
                         return false;
                     
-                    if(!chk(/\d{3,4}/,tel2, "전화번호 3~4자리 숫자를 넣으세요"))
+                    if(!chk(/^\d{3,4}$/,tel2, "전화번호 3~4자리 숫자를 넣으세요"))
                         return false;
                     
-                    if(!chk(/\d{4}/,tel3, "전화번호 4자리 숫자를 넣으세요"))
+                    if(!chk(/^\d{4}$/,tel3, "전화번호 4자리 숫자를 넣으세요"))
                         return false;
             }
 
             function chk(re, e, msg) {
-                    // console.log(typeof(re));
-                    // console.log("re : " + re);
-                    // console.log("e : " + e);
-                    // console.log("e.value : " + e.value);
+                console.log(re);
                     if (re.test(e.value)) {
-                        console.log("reg check");
-                            return true;
+                        return true;
                     }
         
                     alert(msg);
@@ -99,7 +95,7 @@
                     return false;
             }
             function regTestFn() {
-                // (.gif|.jpg|.png)$
+                // \w+.(gif|jpg|png)$
 
                 // 현재 이 메소드는 완성되어 있습니다.
                 // 필요한 정규표현식을 화면에서 적어 확인해 보세요.
@@ -130,7 +126,7 @@
                 //   'ABC'가 아닌 것을 찾되 앞의 특수한 형식을 맞춰서 찾아라 라는 뜻이다.
 
                 regResult.innerHTML
-                = commaNum.replace(/(?=\d{3})/g, function(val){ 
-                    return val+",";
+                = commaNum.replace(/ ((?=\d{3}) | \d+)/g, function(val){ 
+                    return  val+"@";
                 });
             }

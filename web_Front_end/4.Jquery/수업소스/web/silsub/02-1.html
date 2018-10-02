@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>02-1</title>
+        <script src="../resource/js/jquery-3.3.1.min.js"></script>
+        <script>
+        $("input:checkbox").change(checkBtn);
+
+        function checkBtn(){
+            console.log($("input:checkbox").prop("checked"));
+        }
+
+        </script>
+    </head>
+    <body>
+        <input type="checkbox" name="check" value="1"> 1번
+        <input type="checkbox" name="check" value="2"> 2번
+        <input type="checkbox" name="check" value="3"> 3번
+        <input type="checkbox" name="check" value="4"> 4번
+        <br>
+        <input type="button" value="체크 버튼 확인" onclick="checkBtn()">
+    </body>
+</html>
