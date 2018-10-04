@@ -4,11 +4,14 @@
         <script src="../resource/js/jquery-3.3.1.min.js"></script>
         <script>
             function addFile(){
-                // to do ...
+                $("div").append("<br><input type='file'>");
             }
 
             function delFile(){
-                // to do ...
+                if($("div>input[type=file]").length != 1){
+                    $("div>input[type=file]:last").remove();
+                    $("div>br:last").remove();
+                }
             }
         </script>
     </head>
@@ -16,7 +19,7 @@
         <div>
             <input type="file">
             <input type="button" value="추가" onclick="addFile()">
-            <input type="button" value="삭제" onclick="delFile()">
+            <input type="button" value="삭제" onclick="delFile()"> 
         </div>
     </body>
 </html>

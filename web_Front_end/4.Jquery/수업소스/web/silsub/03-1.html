@@ -4,7 +4,12 @@
         <script src="../resource/js/jquery-3.3.1.min.js"></script>
         <script>
             function add(){
-                // to do...
+                var title  = $("input[name=title]").val();
+                var content = $("input[name=content]").val();
+                var owner = $("input[name=owner]").val();
+
+                $("table").append("<tr><td>" + title + "</td><td>" + content + "</td><td>" + owner + "</td></tr>"); 
+                // $("table").html($("table").html() + "<tr><td>" + title + "</td><td>" + content + "</td><td>" + owner + "</td></tr>");
             }
         </script>
     </head>
