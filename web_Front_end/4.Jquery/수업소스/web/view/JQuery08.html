@@ -1,0 +1,103 @@
+<html>
+    <head>
+        <title>attr() / css()</title>
+        <script src="../resource/js/jquery-3.3.1.min.js"></script>
+        <style>
+            .first { color : darkmagenta; }
+            .second { color : darkblue; }
+            .third { color : chocolate; }
+        </style>
+    </head>
+    <body>
+        
+        <h1>속성 메소드</h1>
+
+        <h3>attr() 메소드</h3>
+        <p>웹 문서 요소들의 특정 속성을 알아내거나 변경할 때 사용한다.</p>
+        <img src="../resource/image/flower1.PNG" width="400px" height="300px">
+
+        <script>
+            $(function(){
+                // attr('속성명') -> 해당 속성에 맞는 값을 리턴한다.
+                
+                var imgAddr = $('img').attr("src");
+                console.log("img src : " + imgAddr);
+                
+                // attr("속성명", "속성값") -> 해당 속성의 값을 
+                $("img").attr("src", "../resource/image/flower2.PNG");
+                
+                // 만약 선택한 요소가 어려 개일 경우,
+                // 함수를 통해 값을 연속적으로 변경할 수 있다.
+                $("img").attr("src", function(index, value){
+                    console.log(index + "  " + value);
+                });
+
+                // 하나의 객체의 여러 속성을 설정하기
+                $("img").attr({
+                    "width"  : "100px",
+                    "height" : "500px"
+                });
+
+                // 요소의 기본 속성 제거하기
+                $("img").removeAttr("width").removeAttr("height");
+
+            });
+        </script>
+        
+        <h3>prop()</h3>
+        <p>일반적으로 입력 양식에 사용되는 속성들 중 <br>
+            값을 참 거짓으로 팔별할 수 있는 속성을 다룰 때 사용한다.</p>
+
+            <input type="checkbox" class="check"> 하나
+            <input type="checkbox" class="check"> 둘
+            <input type="checkbox" class="check"> 셋 <br>
+            <button onclick="checkProp();">실행 확인</button>
+        <script>
+            function checkProp(){
+                $('.check').each(function(index, item){
+                    // 속성 값 중 disabled, checked, selected와 같이
+                    // 참과 거짓으로 판별할 수 있는 속성은 prop() 함수를 통해
+
+                    // if($(this).has("checked")){
+                    //     console.log(index + " : " + $(this).attr("checked"));
+                    // }
+                    if($(this).prop('checked')){
+                        console.log(index + " : " + $(this).prop('checked'));
+                    }
+                });
+            }
+        </script>
+
+        <hr>
+
+        <h3>css() 메소드</h3>
+        <p>해당 요소의 스타일을 검사하거나 변경하는 메소드이다.</p>
+        <h1 class="first">test - 1</h1>
+        <h1 class="second">test - 2</h1>
+        <h1 class="third">test - 3</h1>
+
+        <script>
+            $(function(){
+
+                // css('속성명') : 속성명에 해당하는 값을 리턴한다.
+                console.log($(".first").css("color"));
+
+                // css('속성명', '속성값') : 속성명에 해당하는 값을 특정 값으로 변경한다.
+                $(".second").css("color", "tomato");
+
+                // 선택학 요소가 여러개일 경우 해당하는 속성들을 
+                // 연속 처리할 수도 있다.
+                $("h1").css("color", function(index, value){
+                    console.log(index + " : " + value);
+                });
+
+                // css() 로 여러 속성 설정하기
+                // $(".third").css("color", "red").css("background", "yellow");
+                $(".third").css({
+                    "color" : "black",
+                    "background" : "yellow"
+                });
+            });
+        </script>
+    </body>
+</html>

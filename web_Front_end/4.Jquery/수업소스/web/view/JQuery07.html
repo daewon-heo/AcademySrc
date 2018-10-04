@@ -1,0 +1,195 @@
+<html>
+    <head>
+        <title>메소드</title>
+        <script src="../resource/js/jquery-3.3.1.min.js"></script>
+        <style>
+            .high_light_0 { background: orange;}
+            .high_light_1 { background: lightcoral;}
+            .high_light_2 { background: lightgreen;}
+            .high_light_3 { background: beige;}
+            .high_light_4 { background: lightskyblue;}
+        </style>
+    </head>
+    <body>
+        <h1>메소드</h1>
+
+        <h3>$.each() 메소드</h3>
+        <p>배열을 관리하는 for in 문을 메소드 형태로 제공하기 위한 함수</p>
+        <p>사용형식 : <br>
+            $.each(object(배열), function(index, item){. . .});
+            index : 배열의 인덱스나 특정 객체의 키 값을 의미한다.
+            item : 해당하는 인덱스나, 키의 값을 의미한다.
+        </p>
+
+        <div id="wrap1"></div>
+
+        <script>
+            $(function(){
+                var arr = [
+                    {name : "네이버", link : "https://www.naver.com"},
+                    {name : "구글", link : "https://www.google.com"},
+                    {name : "다음", link : "https://www.daum.net"},
+                    {name : "W3C", link : "https://www.w3.org"},
+                ];
+
+                $.each(arr, function(index, item){
+                    var output = "";
+
+                    output += "<a href=" + item.link + ">";
+                    output += "<span>" + item.name + "</span>";
+                    output += "</a> &nbsp;&nbsp;&nbsp;";
+
+                    // html() : getter
+                    // html(내용) : setter
+
+                    $("#wrap1").html($("#wrap1").html()+output);
+
+                });
+            });
+        </script>
+
+        <h3>$('선택자').each() 메소드</h3>
+        <p>사용형식 : <br>
+            $('선택자').each(function(index, item){ . . . });<br>
+            만약 선택한 요소가 여러 개 있을 경우 하나씩 연달아 사용할 수 있도록 <br>
+            반복을 제공하는 메소드이다. 매개 인자는 $.each() 메소드와 동일하다. <br>
+            또한 선택자 역시 $.each()의 object와 동일하다.
+        </p>
+
+        <div id="wrap2">
+            <h1>item-0</h1>
+            <h1>item-1</h1>
+            <h1>item-2</h1>
+            <h1>item-3</h1>
+            <h1 id="item4">item-4</h1>
+        </div>
+
+        <script>
+            $(function(){
+                console.log($("#wrap2").children());
+
+                $("#wrap2").children().each(function(index, item){
+                    // 문서 객체에 class 속성을 추가하기
+                    $(this).addClass("high_light_" + index);
+
+                    // 문서 객체에서 특정 class 속성을 제거하기
+                    // if(index == 2){
+                    //     $(this).removeClass("high_light_" + index);
+                    // }
+
+                    index == 2 && $(this).removeClass("high_light_" + index);
+                });
+
+                $("#item4").click(function(){
+                    $(this).toggleClass("high_light_4");
+                });
+
+            });
+        </script>
+
+        <hr>
+
+        <h3>문서 특정 요소의 속성 판별 : is()</h3>
+        <p>매개인자로 전달받은 요소가 현재 선택한 요소의 내용과 일치하는지 확인</p>
+
+        <div id="wrap3">
+            <h3 class="test">test-1</h3>
+            <h3>test-2</h3>
+            <h3 class="test">test-3</h3>
+            <h3 class="test">test-4</h3>
+            <h3>test-5</h3>
+            <h3 class="test">test-6</h3>
+        </div>
+
+        <script>
+            $(function(){
+                $("#wrap3").children().each(function(){
+                    // is() 선택자를 통한 일치 여부
+                    // hasAttr() / hasClass() 는
+                    // 각 속성의 문자열을 통해 일치 여부를 확인
+
+                    // if($(this).is('.test')){
+                    //     // test 클래스가 있으면 true / 없으면 false 리턴
+                    //     $(this).css({
+                    //         "background" : "orange",
+                    //         "color" : "navy"
+                    //     });
+                    // }
+
+                    $(this).is('.test') && $(this).css({
+                        "background" : "orange",
+                        "color" : "navy"
+                    });
+                });
+            });
+        </script>
+
+        <hr>
+
+        <h3>$.extend() : 메소드</h3>
+        <p>특정 객체(요소)에 속성을 추가하거나, 여러 개의 객체를 <br>
+            하나로 합칠 때 사용하는 메소드</p>
+
+        <script>
+            $(function(){
+                var obj1 = {
+                    name : "홍길동",
+                    address : "서울시"
+                };
+                var obj2 = {
+                    name : "홍길동_2",
+                    hobby : ["서핑","도적질","도술"]
+                }
+                
+                console.log(obj1);
+                console.log(obj2);
+
+                $.extend(obj1, { job:"의적"});
+
+                console.log(obj1);
+
+                // 두 객체를 하나로 합치기
+                // 중복되는 객체의 속성은 나중의 것으로 덮어씌운다.
+                var obj1Sum1 = $.extend(obj1, obj2);
+                var obj1Sum2 = $.extend(obj2, obj1);
+
+                console.log(obj1Sum1);
+                console.log(obj1Sum2);
+
+            })
+        </script>
+
+        <hr>
+
+        <h3>$.noConflict()</h3>
+        <p>다른 라이브러리나 다른 버전의 JQuery를 사용할 때 <br>
+            '$' 기호의 충돌을 방지하기 위해 사용한다.</p>
+
+        <h1 id="testConflict">noConflict 확인하기</h1>
+
+        <script>
+            /*
+            var jq = $.noConflict();
+
+            //$(function(){});
+            jq(function(){
+                jq("#testConflict").css("color", "green");
+            });
+            */
+
+        </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+</html>

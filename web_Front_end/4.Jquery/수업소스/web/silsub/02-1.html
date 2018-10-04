@@ -6,9 +6,12 @@
         $("input:checkbox").change(checkBtn);
 
         function checkBtn(){
-            console.log($("input:checkbox").prop("checked"));
+            var v = $("input:checkbox:checked");
+            
+            for(var i = 0 ; i < v.length; i++){
+                console.log(v[i].value + "번");
+            }
         }
-
         </script>
     </head>
     <body>

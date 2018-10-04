@@ -9,19 +9,22 @@
 
             function click1(){
                 clear();
-                $("tr:eq(1)").not(':contains("가")').css("color","yellow");
+                $("tr:eq(1)>td:gt(0)").css("color", "yellow");
             }
 
             function click2(){
                 clear();
+                $("tr:eq(2)>td:gt(0)").css("color", "yellow");
             }
 
             function click3(){
                 clear();
+                $("tr:gt(0):lt(2)>td:nth-child(2)").css("color", "yellow");
             }
 
             function click4(){
                 clear();
+                $("tr:gt(0):lt(2)>td:nth-child(3)").css("color", "yellow");
             }
         </script>
     </head>
