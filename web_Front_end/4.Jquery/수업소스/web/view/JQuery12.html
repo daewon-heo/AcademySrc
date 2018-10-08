@@ -1,0 +1,148 @@
+<html>
+    <head>
+        <title>이벤트 연결 메소드</title>
+        <script src="../resource/js/jquery-3.3.1.min.js"></script>
+        <style>
+            .outer{
+                width : 300px;
+                height : 200px;
+                background: tomato;
+                padding: 50px;
+            }   
+
+            .inner{
+                width : 100%;
+                height : 100%;
+                background : lightgreen; 
+            }   
+
+            .reverse{
+                background: black;
+                color : white;
+            }      
+            
+            .trg{
+                width : 200px;
+                height : 200px;
+                background: palegreen;
+                text-align: center;
+                vertical-align: middle;
+                cursor: pointer;
+            }
+
+            .increment {
+                width : 200px;
+                height : 50px;
+                background: black;
+                color : white;
+                text-align: center;
+                margin-top : 20px;
+                cursor : pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>이벤트 연결 메소드</h1>
+        <h3>mouse 관련 이벤트</h3>
+        <p>
+            mouesenter : 이벤트 대상에 마우스가 올라오면 발생<br>
+            mouseleave : 이벤트 대상에서 마우스가 완전히 벗어나면 발생<br>
+            mouseout : 이벤트 대상에서 마우스가 벗어나면 발생<br>
+            mouseover : 마우스의 위치가 요소 위에 존재하면 발생
+        </p>
+
+        <div class="outer">
+            <div class="inner"></div>
+        </div>
+
+        <script>
+            $(function(){
+                $(".outer").mouseenter(function(){
+                    console.log(" >> ENTER << ");
+                });
+
+                $(".outer").mouseleave(function(){
+                    console.log(" ~~ LEAVE ~~ ");
+                });
+
+                $(".outer").mouseout(function(){
+                    console.log(" !! OUT !! ");
+                });
+            });
+        </script>
+
+        <h3>hover() 메소드</h3>
+        <p>mouseenter와 mouseleave를 동시에 사용하는 이벤트</p>
+        <h1 id="test1">hover 테스트</h1>
+        <script>
+            $(function(){
+                $("#test1").hover(function(){
+                    console.log("enter");
+                    $(this).addClass("reverse");
+                }, function(){
+                    console.log("leave");
+                    $(this).removeClass("reverse");
+                });
+            });
+        </script>
+
+        <hr>
+
+        <h3>키보드 이벤트</h3>
+        <p>
+            keydown : 키가 눌렸을 때 <br>
+            keypress : 키가 눌려지고 있는 상태 <br>
+            keyup : 키에서 손을 떼었을 때
+        </p>
+
+        <h4>동적으로 글자수 세기</h4>
+        <div>
+            <h1 id="counter">150</h1>
+            <textarea cols="70" rows="5"></textarea>
+        </div>
+
+        <script>
+            $(function(){
+                $("textarea").keydown(function(){
+                    var inputLength = $(this).val().length;
+                    var remain = 150 - inputLength;
+
+                    $("#counter").html(remain);
+
+                    if(remain >= 0){
+                        $("#counter").css("color", "black");
+                    }else{
+                        $("#counter").css("color", "red");
+                    }
+                });
+            });
+        </script>
+
+        <hr>
+
+        <h3>trigger() 메소드</h3>
+        <p>특정 이벤트가 발생하는 것을 감지하여 함께 동작하는 메소드 </p>
+
+        <div id="trg" class="trg">
+            clicked Num : <span>0</span>
+        </div>
+
+        <div class="increment" id="increment">클릭하세요!</div>
+
+        <script>
+            var cnt = 0;
+
+            $(function(){
+
+                $("#increment").on('click', function(){
+                    cnt++;
+                    $("span").text(cnt);
+                });
+
+                $("#trg").click(function(){
+                    $("#increment").trigger("click");
+                });
+            });
+        </script>
+    </body>
+</html>

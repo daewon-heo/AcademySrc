@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<title>그리드 레이아웃</title>
+<style>
+	.row1 {
+		border: 1px solid black;
+		padding-top: 15px;
+		padding-left: 25px;
+		font-size: 20px;
+		height:100px;
+		background: orange;
+	}
+	.row2 {
+		border:1px solid black;
+		padding-top: 15px;
+		padding-left: 25px;
+		font-size: 20px;
+		height:150px;
+		background: palegreen;
+	}
+	.row3 {
+		border:1px solid black;
+		padding-top: 15px;
+		padding-left: 25px;
+		font-size: 20px;
+		height:200px;
+		background:skyblue;
+	}
+	.for-xs {
+		border:1px solid black;
+		font-size: 20px;
+		height:150px;
+		background:pink;
+	}
+	h3 {
+		color:red;
+	}
+</style>
+</head>
+<body>
+<h1 align="center">가변 그리드 레이아웃</h1>
+
+<h3 align="center" class="hidden-md hidden-sm hidden-xs">현재 화면은 데스크탑 전용입니다.</h3>
+<h3 align="center" class="hidden-lg hidden-sm hidden-xs">현재 화면은 노트북 전용입니다.</h3>
+<h3 align="center" class="hidden-lg hidden-md hidden-xs">현재 화면은 태블릿 전용입니다.</h3>
+<h3 align="center" class="hidden-lg hidden-md hidden-sm">현재 화면은 스마트폰 전용입니다.</h3>
+
+<br>
+
+<div class="row">
+	<div class="row1 col-lg-1 col-md-2 col-sm-3 col-xs-6">1</div>
+	<div class="row1 col-lg-1 col-md-2 col-sm-3 col-xs-6">2</div>
+	<div class="row1 col-lg-1 col-md-2 col-sm-3 col-xs-6">3</div>
+	<div class="row1 col-lg-1 col-md-2 col-sm-3 col-xs-6">4</div>
+	<div class="row1 col-lg-1 col-md-2 col-sm-3 col-xs-6">5</div>
+	<div class="row1 col-lg-1 col-md-2 col-sm-3 col-xs-6">6</div>
+	<div class="row1 col-lg-1 col-md-2 col-sm-3 col-xs-6">7</div>
+	<div class="row1 col-lg-1 col-md-2 col-sm-3 col-xs-6">8</div>
+	<div class="row1 col-lg-1 col-md-2 col-sm-3 col-xs-6">9</div>
+	<div class="row1 col-lg-1 col-md-2 col-sm-3 col-xs-6">10</div>
+	<div class="row1 col-lg-1 col-md-2 col-sm-3 col-xs-6">11</div>
+	<div class="row1 col-lg-1 col-md-2 col-sm-3 col-xs-6">12</div>
+</div>
+<div class="row">
+	<div class="row2 col-lg-2 col-md-4 col-sm-6 col-xs-12">1</div>
+	<div class="row2 col-lg-2 col-md-4 col-sm-6 col-xs-12">2</div>
+	<div class="row2 col-lg-2 col-md-4 col-sm-6 col-xs-12">3</div>
+	<div class="row2 col-lg-2 col-md-4 col-sm-6 col-xs-12">4</div>
+	<div class="row2 col-lg-2 col-md-4 col-sm-6 col-xs-12">5</div>
+	<div class="row2 col-lg-2 col-md-4 col-sm-6 col-xs-12">6</div>
+</div>
+<div class="row">
+	<div class="row3 col-lg-2 col-md-1 col-sm-1 hidden-xs">1</div>
+	<div class="row3 col-lg-4 col-md-5 col-sm-5 hidden-xs">2</div>
+	<div class="row3 col-lg-4 col-md-5 col-sm-5 hidden-xs">3</div>
+	<div class="row3 col-lg-2 col-md-1 col-sm-1 hidden-xs">4</div>
+	
+	<div class="row3 for-xs hidden-lg hidden-md hidden-sm col-xs-6">1</div>
+	<div class="row3 for-xs hidden-lg hidden-md hidden-sm col-xs-6">2</div>
+	<div class="row3 for-xs hidden-lg hidden-md hidden-sm col-xs-6">3</div>
+	<div class="row3 for-xs hidden-lg hidden-md hidden-sm col-xs-6">4</div>
+</div>
+
+</body>
+</html>

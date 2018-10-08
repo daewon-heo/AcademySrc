@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <title>Effect 함수(animate)</title>
+        <script src="../resource/js/jquery-3.3.1.min.js"></script>
+        <style>
+            #test1{
+                width : 200px;
+                height : 200px;
+                background: blue;
+            }
+
+            .test2{
+                width : 50px;
+                height: 50px;
+                background: red;
+                position: relative;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Effect 관련 함수들</h1>
+        <p>웹 페이지에 시각적인 효과를 적용하는 함수들</p>
+        <h3>animate() 함수</h3>
+
+        <div id="test1"></div>
+        <!-- <button onclick="test1();">실행 확인</button> -->
+        <button id="btn1">실행 확인</button>
+        <script>
+            $(function(){
+                $("#btn1").on('click', function(){
+                    $("#test1").animate({
+                        width : "500px",
+                        opacity : 0.4
+                    }, 3000, function(){
+                        // 애니메이션 동작이 완료된 이후에 실행할 내용
+                        alert("애니메이션 실행확인");
+                    });
+                });
+            });
+        </script>
+
+        <hr>
+
+        <h3>상대적 애니메이션</h3>
+
+        <div class="test2"></div>
+        <div class="test2"></div>
+        <div class="test2"></div>
+        <div class="test2"></div>
+        <div class="test2"></div>
+        <div class="test2"></div>
+        <div class="test2"></div>
+
+        <script>
+            // 순차적인 애니메이션 처리하기
+
+            $(function(){
+                $(".test2").each(function(index, item){
+                    $(this).delay(index * 50).animate({left:500}, 'slow');
+                });
+
+                $(".test2").click(function(){
+                    var width = $(this).css("width");
+                    var height = $(this).css("height");
+                    
+                    $(this).animate({
+                        width : parseInt(width) + 50,
+                        height : parseInt(height) + 50,
+                        opacity : 0.3
+                    }, 'slow');
+                });
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>04-3</title>
+        <script src="../resource/js/jquery-3.3.1.min.js"></script>
+        <script>
+            $(function(){
+                $("td").click(function(){
+                    $(this).parent().children().each(function(index){
+                        $("#s" + (index+1)).html($(this).text());
+                        $(this).parents("tr").css("background","red").text();
+                        $(this).parents("tr").siblings().css("background","");
+                    });
+                });
+            });
+        </script> 
+    </head>
+    <body>
+        <table border="1">
+            <tr><th>번호</th><th>제목</th>
+                <th>조회수</th><th>작성일자</th></tr>
+            <tr><td>3</td><td>3번제목</td>
+                <td>0</td><td>11-07-13</td></tr>
+            <tr><td>2</td><td>2번제목</td>
+                <td>0</td><td>11-07-12</td></tr>
+            <tr><td>1</td><td>1번제목</td>
+                <td>0</td><td>11-07-11</td></tr>
+        </table>
+        선택된 행 : 
+        <span id="s1"></span> / <span id="s2"></span>
+        / <span id="s3"></span> / <span id="s4"></span>
+    </body>
+</html>

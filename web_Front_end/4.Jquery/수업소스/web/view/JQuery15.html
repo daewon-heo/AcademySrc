@@ -1,0 +1,162 @@
+<html>
+    <head>
+        <title>시각적 효과 표현하기</title>
+        <script src="../resource/js/jquery-3.3.1.min.js"></script>
+        <style>
+            img {
+                width : 300px;
+                height : 200px;
+            }
+
+            .menu {
+                width : 500px;
+                height : 50px;
+                background : lightpink;
+                border-radius: 10px;
+                text-align: center;
+                border: 3px solid red;
+                cursor: pointer; 
+            }
+
+            .content {
+                width : 500px;
+                height : 100px;
+                border: 3px solid gray;
+                text-align: center;
+                display : none;
+
+            }
+        </style>
+    </head>
+    <body>
+        <h1>시각적 효과 표현하기</h1>
+
+        <h3>show(), hide();</h3>
+
+        <button id="showImg">보여주기</button>
+        <button id="hideImg">숨기기</button>
+
+        <img id="river" src="../resource/image/river1.PNG">
+
+        <script>
+            $(function(){
+                $("#showImg").click(function(){
+                    $("#river").show();
+                });
+
+                $("#hideImg").click(function(){
+                    $("#river").hide();
+                });
+            });
+        </script>
+
+        <hr>
+
+        <h3>toggle() : show()와 hide()를 번갈아 실행하는 함수 </h3>
+        <button id="toggleBtn">토글 확인하기</button>
+
+        <br>
+
+        <img src="../resource/image/flower1.PNG" id="forest">
+
+        <script>
+            $(function(){
+                // 만약 토글이 없었을 경우
+                
+                // var cnt = 0; // cnt라는 변수를 토글하기 위한 기준 변수로 새엉하여
+                //              // cnt가 짝수냐 홀수냐에 따라 show()와 hide를 
+                //              // 번갈아 호출한다.
+                // $("#toggleBtn").click(function(){
+                //     console.log(cnt);
+
+                //     cnt++;
+
+                //     if(cnt % 2 != 1){
+                //         $("#forest").show();
+                //     }else{
+                //         $("#forest").hide();
+                //     }
+                // });
+
+                $("#toggleBtn").click(function(){
+                    $("#forest").toggle(1500, function(){
+                        alert("토글 실행 확인");
+                    });
+                });
+            });
+        </script>
+
+        <hr>
+
+        <h3>slideDown()과 slideUp() 함수</h3>
+
+        <div class="menu">반품 언제 되나요?</div>
+        <p class="content">지금 확인 중입니다.</p>
+        
+        <div class="menu">상품 위치를 확인하고 싶습니다.</div>
+        <p class="content">배송 조회 해보세요, 거기 나옵니다.</p>
+        
+        <div class="menu">이 사이즈 있나요?</div>
+        <p class="content">있어요 ^_^ !!</p>
+        
+        <div class="menu">전화 통화 가능 시간 알려주세요.</div>
+        <p class="content">플러스친구 카톡을 활용하시면 24시간 답변 드리겠습니다.</p>
+        
+        <div class="menu">판매자가 연락이 안됩니다.</div>
+        <p class="content">신고 하세요.</p>
+
+        <script>
+            $(function(){
+                $(".content").slideUp();
+
+                $(".menu").click(function(){
+                    // $(this).next("p").slideDown();
+                    $(this).next("p").slideToggle(1000, function(){
+
+                        alert("슬라이드 토글 확인");
+
+                    });
+                });
+            });
+        </script>
+
+        <hr>
+
+        <h3>fadeIn()과 fadeOut()</h3>
+        <button id="fadeIn">fadeIn()</button>
+        <button id="fadeOut">fadeOun()</button> <br>
+
+        <img src="../resource/image/flower3.PNG" id="flower3">
+
+        <script>
+            $(function(){
+                $("#fadeIn").click(function(){
+                    $("#flower3").fadeIn(1500);
+                });
+
+                $("#fadeOut").click(function(){
+                    $("#flower3").fadeOut(1500);
+                });
+            })
+        </script>
+
+        <hr>
+
+        <button id="fadeToggle">fadeToggle()</button>
+        <br>
+
+        <img src="../resource/image/flower4.PNG" id="flower4">
+
+        <script>
+            $(function(){
+                $("#fadeToggle").click(function(){
+                    $("#flower4").fadeToggle(500, function(){
+
+                        alert("fadeToggle 확인!");
+                        
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>
