@@ -9,13 +9,9 @@
 	 * 함수 : text(), html(), replace(), 정규식(/cat/g) or split(), join()
 	 */
 	function run() {
+		var temp = $("div").html();
 		
-		var temp = $("div").text();
-
-		for(var i = 0 ; i < temp.length; i++){
-			temp[i].replace("cat","dog");
-		}
-		console.log($("div").text().replace("cat", "dog"));
+		$("div").after().html(temp.replace(/cat/g,"dog"));
 	}
 </script>
 
